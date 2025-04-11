@@ -67,6 +67,7 @@ function Header() {
         className={`flex flex-col h-[93vh] ${menuOpen ? "fade" : "fade-hidden"} ${
           isDarkMode ? "bg-[#080808]" : "white"
         }`}
+        onClick={toggleMenu}
       >
         <ul
           className={`w-full px-4 py-4 space-y-1 divide-y ${
