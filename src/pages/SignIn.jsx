@@ -1,17 +1,13 @@
-import Login from "../components/Login.jsx";
-import GetStarted from "../components/GetStarted.jsx";
+
 
 function SignIn() {
-
+  return (
+    <>
   
-
-  if (localStorage.getItem("token")) {
-    return <GetStarted />;
-  }
-
-  else {
-    return <Login />;
-  }
+    <h1>SING in</h1>
+    
+    </>
+  );
 }
 
 export default SignIn;
