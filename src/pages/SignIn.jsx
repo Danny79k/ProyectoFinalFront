@@ -1,9 +1,35 @@
 import { NavLink } from "react-router-dom";
+
+import { useState } from "react";
+import img from "../assets/sigla-3d-Telem-Iasi.png";
 import { useUtilityMenu } from "../store/useStore";
 import img from "../assets/login.png";
 
 function SignIn() {
   const { isDarkMode } = useUtilityMenu();
+  const [email, setEmail] = useState("usuario@ejemplo.com");
+  const [password, setPassword] = useState("password");
+  
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      localStorage.setItem("token", data.token);
+      console.log(data);
+      console.log(email, password)
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -42,6 +68,25 @@ function SignIn() {
               />
             </div>
 
+
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 space-y-6">
+        <form className="space-y-4" method="POST">
+          <div>
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Username
+            </label>
+            <input
+              type="email"
+              id="username"
+              name="username"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="mt-1 block w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50"
+            />
+          </div>
             <div>
               <label
                 htmlFor="password"
@@ -49,34 +94,32 @@ function SignIn() {
                   isDarkMode ? "text-white" : "text-gray-700"
                 }`}
               >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                required
-                autoComplete="off"
-                className="mt-1 block w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition"
-            >
-              Sign In
-            </button>
-
-            <p
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              autoComplete="off"
+              className="mt-1 block w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50"
+            />
+          </div>
+          <p
               className={`text-center text-sm ${
                 isDarkMode ? "text-white" : "text-gray-500"
               }`}
             >
               or continue with
             </p>
-          </form>
-
+        </form>
+        <button
+            onClick={handleLogin}
+            className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition"
+          >
+            Sign In
+          </button>
           <div className="flex flex-col gap-2">
             <button className="w-full py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl flex flex-row items-center justify-center gap-2">
               <svg
