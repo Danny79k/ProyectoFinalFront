@@ -1,9 +1,32 @@
 import { NavLink } from "react-router-dom";
 import { useUtilityMenu } from "../store/useStore";
+import { useState } from "react";
 import img from "../assets/login.png";
 
 function SignIn() {
+  const [email, setEmail] = useState("usuario@ejemplo.com");
+  const [password, setPassword] = useState("password");
   const { isDarkMode } = useUtilityMenu();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      localStorage.setItem("token", data.token);
+      console.log(data);
+      console.log(email, password);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -23,7 +46,7 @@ function SignIn() {
             rounded-t-3xl shadow-2xl p-8 space-y-6 mt-auto
           `}
         >
-          <form className="space-y-4">
+          <form className="space-y-4" method="POST">
             <div>
               <label
                 htmlFor="username"
@@ -34,9 +57,10 @@ function SignIn() {
                 Username
               </label>
               <input
-                type="text"
+                type="email"
                 id="username"
                 name="username"
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 className="mt-1 block w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
               />
@@ -55,6 +79,7 @@ function SignIn() {
                 type="password"
                 id="password"
                 name="password"
+                onChange={(e) => setPassword(e.target.value)}
                 required
                 autoComplete="off"
                 className="mt-1 block w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
@@ -62,7 +87,7 @@ function SignIn() {
             </div>
 
             <button
-              type="submit"
+              onClick={handleLogin}
               className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition"
             >
               Sign In
