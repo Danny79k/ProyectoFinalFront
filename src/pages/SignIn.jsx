@@ -1,11 +1,9 @@
 import { NavLink } from "react-router-dom";
-
 import { useUtilityMenu } from "../store/useStore";
 import { useState } from "react";
 import img from "../assets/login.png";
 
 function SignIn() {
-
   const [email, setEmail] = useState("usuario@ejemplo.com");
   const [password, setPassword] = useState("password");
   const { isDarkMode } = useUtilityMenu();
@@ -31,7 +29,6 @@ function SignIn() {
   };
 
   return (
-
     <>
       <div
         className={`${
@@ -158,33 +155,22 @@ function SignIn() {
             </button>
           </div>
 
-
-          <p className="text-center text-gray-500 text-sm">or continue with</p>
-        </form>
-
-        <div className="flex flex-col gap-2">
-          <button className="w-full py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl">
-            Google
-          </button>
-          <button className="w-full py-2 bg-blue-800 hover:bg-blue-900 text-white font-semibold rounded-xl">
-            Facebook
-          </button>
-          <button className="w-full py-2 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-xl">
-            GitHub
-          </button>
-        </div>
-
-        <div className="text-center text-sm text-gray-600 mt-4">
-          Don't have an account?{" "}
-          <NavLink
-            to="/getStarted"
-            className="text-blue-600 hover:underline font-medium"
+          <div
+            className={`text-center text-sm mt-4 ${
+              isDarkMode ? "text-white" : "text-gray-600"
+            }`}
           >
-            Sign Up
-          </NavLink>
+            Don't have an account?{" "}
+            <NavLink
+              to="/getStarted"
+              className="text-blue-600 hover:underline font-medium ml-4"
+            >
+              Sign Up
+            </NavLink>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
