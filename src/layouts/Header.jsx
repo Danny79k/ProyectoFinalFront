@@ -13,7 +13,7 @@ function Header() {
 
   return (
     <>
-      <header className="header-div w-screen top-0 flex justify-between items-center">
+      <header className="header-div w-[100%] flex justify-between items-center">
         <NavLink to="/" className="overflow-hidden">
           <img src={img} alt="Tele M" className="size-20" />
         </NavLink>

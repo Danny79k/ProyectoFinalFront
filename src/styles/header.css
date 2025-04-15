@@ -51,8 +51,6 @@
     /* Chrome, Safari y Opera */
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-
 .headerMenu-div {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
@@ -81,12 +79,12 @@ Darkmode
 }
 
 [data-theme="dark"] .headerMenu-div {
-    background-color: #1b1b1b;
+    background-color: #000000;
     color: #ffffff;
 }
 
 [data-theme="dark"] .headerWelcome-div li{
-    background-color: #495057;
+    background-color: #070707;
     box-shadow: #b3b3b3 0px 2px 0.5cap 0px;
 }   
 

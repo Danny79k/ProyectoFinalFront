@@ -1,0 +1,24 @@
+
+[data-theme="dark"]  .signIn-div{
+    
+    color: #ffffff;
+    background-color: black;
+}
+
+[data-theme="dark"]  .signIn-form-div{
+    background-color: rgb(2, 0, 36);
+}
+
+[data-theme="dark"]  .signIn-form-div form input{
+    background-color: rgb(249, 249, 249);
+    border: none;
+    color: black;
+}
+
+
+@media screen and (max-width: 450px) {
+
+    .continueWith-div {
+        flex-direction: column;
+    }
+}
