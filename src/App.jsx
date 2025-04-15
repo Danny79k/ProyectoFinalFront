@@ -1,13 +1,25 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./Layouts/Layout";
+import Layout from "./layouts/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import SignIn from "./pages/SignIn";
 import GetStarted from "./pages/GetStarted";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { useUtilityMenu } from "./store/useStore";
+import { useEffect } from "react";
 
 function App() {
+
+  const { isDarkMode } = useUtilityMenu();
+
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      "data-theme",
+      isDarkMode ? "dark" : "light"
+    );
+  }, [isDarkMode]);
+
   return (
     <>
       <BrowserRouter>

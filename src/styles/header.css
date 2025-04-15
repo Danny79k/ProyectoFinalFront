@@ -1,0 +1,98 @@
+.header-div {
+    display: flex;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    height: 60px;
+}
+
+/* CSS de la animacion  */
+
+.header-rotate-y {
+    transform: rotateX(180deg);
+    opacity: 1;
+    scale: 1;
+    transition: 0.4s ease-in-out;
+}
+
+.header-rotate-y-hidden {
+    transform: rotateX(0deg);
+    opacity: 0;
+    scale: 0;
+    transition: 0.4s ease-in-out;
+}
+
+.header-fade {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    visibility: visible;
+    z-index: 1;
+}
+
+.header-fade-hidden {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+/* Fin del CSS de la animacion  */
+
+.headerMenu-div {
+    padding: 0 20px;
+    background-color: #ffffff;
+    width: 100%;
+    height: calc(100vh - 60px);
+    z-index: 1;
+
+}
+
+.headerMenu-div::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari y Opera */
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.headerMenu-div {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.headerWelcome-div li{
+    box-shadow: #4a4a4a 0px 2px 0.5cap 0px;
+}   
+
+/* 
+
+
+
+
+Darkmode  
+
+
+
+
+*/
+
+[data-theme="dark"] .header-div {
+    background-color: #171717;
+    border-bottom: 1px solid #495057;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .headerMenu-div {
+    background-color: #1b1b1b;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .headerWelcome-div li{
+    background-color: #495057;
+    box-shadow: #b3b3b3 0px 2px 0.5cap 0px;
+}   
+
+@media screen and (min-width: 950px) {
+
+    .butom-header {
+        display: none;
+    }
+}
