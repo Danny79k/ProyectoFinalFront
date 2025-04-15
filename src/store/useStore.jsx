@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export const useUtilityMenu = create((set) => ({
   menuOpen: false,
-  isDarkMode: true,
+  isDarkMode: false,
 
 
   toggleTheme: () => set((state) => ({ isDarkMode: !state.isDarkMode })),

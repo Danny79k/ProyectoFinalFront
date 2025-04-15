@@ -1,28 +1,22 @@
 import { NavLink } from "react-router-dom";
 import { useUtilityMenu } from "../store/useStore";
 import { useState } from "react";
+import "../styles/signIn.css";
 import img from "../assets/login.png";
 
 function SignIn() {
-  //Logic para el login
-
   const [email, setEmail] = useState("usuario@ejemplo.com");
-
   const [password, setPassword] = useState("password");
-  const { isDarkMode } = useUtilityMenu();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     try {
       const res = await fetch("http://localhost/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-
       const data = await res.json();
-
       localStorage.setItem("token", data.token);
       console.log(data);
       console.log(email, password);
@@ -31,34 +25,21 @@ function SignIn() {
     }
   };
 
-  //Fin de la logica del login
-
   return (
     <>
-      <div
-        className={`${
-          isDarkMode ? "bg-slate-950" : "bg-gray-100"
-        } h-[93vh] flex flex-col md:flex-row justify-center items-center`}
-      >
-        <div className="flex justify-center items-center h-1/3 md:h-1/2 md:w-1/2">
-          <img className="w-48 h-48 md:w-72 md:h-72" src={img} alt="img" />
+      <div className="signIn-div flex flex-col  justify-center items-center gap-8">
+        <div className="flex justify-center items-center w-full ">
+          <img className="w-48 h-48" src={img} alt="img" />
         </div>
 
         <div
-          className={`
-            w-full max-w-md 
-            ${isDarkMode ? "bg-slate-900" : "bg-white"}
-            rounded-t-3xl md:rounded-3xl shadow-2xl p-6 md:p-8 space-y-6
-            flex flex-col justify-center h-auto md:h-fit box-border overflow-hidden
-          `}
+          className=" w-full max-w-md  rounded-3xl shadow-2xl p-8 space-y-4"
         >
-          <form className="space-y-2 md:space-y-4" method="POST">
+          <form className="space-y-4" method="POST">
             <div>
               <label
                 htmlFor="username"
-                className={`block text-sm font-medium ${
-                  isDarkMode ? "text-white" : "text-gray-700"
-                }`}
+                className={`block text-sm font-medium `}
               >
                 Username
               </label>
@@ -68,16 +49,14 @@ function SignIn() {
                 name="username"
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="mt-1 block w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
+                className="mt-1 block w-full py-1 border rounded-md focus:outline-none  bg-gray-100"
               />
             </div>
 
             <div>
               <label
                 htmlFor="password"
-                className={`block text-sm font-medium ${
-                  isDarkMode ? "text-white" : "text-gray-700"
-                }`}
+                className={`block text-sm font-medium `}
               >
                 Password
               </label>
@@ -88,7 +67,7 @@ function SignIn() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 autoComplete="off"
-                className="mt-1 block w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
+                className="mt-1 block w-full py-1 border rounded-md focus:outline-none bg-gray-100"
               />
             </div>
 
@@ -99,16 +78,10 @@ function SignIn() {
               Sign In
             </button>
 
-            <p
-              className={`text-center text-sm ${
-                isDarkMode ? "text-white" : "text-gray-500"
-              }`}
-            >
-              or continue with
-            </p>
+            <p className={`text-center text-sm `}>or continue with</p>
           </form>
 
-          <div className="flex flex-col gap-2">
+          <div className="continueWith-div flex flex-row gap-2">
             <button className="w-full py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl flex flex-row items-center justify-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +118,7 @@ function SignIn() {
               </svg>
               Facebook
             </button>
-            <button className="w-full py-2 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-xl flex flex-row items-center justify-center gap-2">
+            <button className="w-full py-2 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl flex flex-row items-center justify-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -161,15 +134,11 @@ function SignIn() {
             </button>
           </div>
 
-          <div
-            className={`text-center text-sm ${
-              isDarkMode ? "text-white" : "text-gray-600"
-            }`}
-          >
+          <div className={`text-center text-sm `}>
             Don't have an account?{" "}
             <NavLink
               to="/getStarted"
-              className="text-blue-600 hover:underline font-medium ml-4"
+              className="text-blue-600 hover:underline font-medium ml-1"
             >
               Sign Up
             </NavLink>
