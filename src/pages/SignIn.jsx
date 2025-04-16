@@ -27,9 +27,16 @@ function SignIn() {
       const data = await res.json();
 
 
-      //guardamos el token en el localStorage
+      //guardamos el token en el sessionStorage
+      // ================================================================
+      sessionStorage.setItem("token", data.token);
+      // ================================================================
 
-      localStorage.setItem("token", data.token);
+      // guardamos el usuario en el sessionStorage
+      // ================================================================
+      sessionStorage.setItem("user", JSON.stringify(data.user));
+      // ================================================================ 
+
       console.log(data);
       console.log(email, password);
     } catch (error) {
