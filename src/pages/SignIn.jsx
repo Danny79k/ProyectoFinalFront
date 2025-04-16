@@ -4,21 +4,29 @@ import { useState } from "react";
 import img from "../assets/login.png";
 
 function SignIn() {
+
+  //useState para guardar el email y la contraseña y el modo oscuro de manera global
+  // ===================================================================
   const [email, setEmail] = useState("usuario@ejemplo.com");
   const [password, setPassword] = useState("password");
   const { isDarkMode } = useUtilityMenu();
+  // ===================================================================
 
+//#region handleLogin
+// =====================================================================
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost/api/login", {
+      const res = await fetch("http://localhost/api/login", /*esta url es un ejemplo local hay que cambiarlo cuando se vaya a desplegar*/{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
+
+      //guardamos el token en el localStorage
 
       localStorage.setItem("token", data.token);
       console.log(data);
@@ -28,6 +36,8 @@ function SignIn() {
     }
   };
 
+//#endregion
+// ======================================================================
   return (
     <>
       <div
@@ -85,7 +95,7 @@ function SignIn() {
                 className="mt-1 block w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
               />
             </div>
-
+            {/*este button no puede ser un submit a pesar de que sea el envio de un formulario, muy importante*/}
             <button
               onClick={handleLogin}
               className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition"
