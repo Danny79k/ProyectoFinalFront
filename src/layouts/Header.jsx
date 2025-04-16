@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useUtilityMenu } from "../store/useStore";
 import { useEffect } from "react";
 import img from "../assets/Tele M.png";
-import "../styles/Header.css";
+import "../styles/header.css";
 
 function Header() {
   const { isDarkMode, menuOpen, toggleTheme, toggleMenu } = useUtilityMenu();
