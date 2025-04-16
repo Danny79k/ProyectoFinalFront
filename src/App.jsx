@@ -6,8 +6,20 @@ import SignIn from "./pages/SignIn";
 import GetStarted from "./pages/GetStarted";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { useUtilityMenu } from "./store/useStore";
+import { useEffect } from "react";
 
 function App() {
+
+  const { isDarkMode } = useUtilityMenu();
+
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      "data-theme",
+      isDarkMode ? "dark" : "light"
+    );
+  }, [isDarkMode]);
+
   return (
     <>
       <BrowserRouter>
