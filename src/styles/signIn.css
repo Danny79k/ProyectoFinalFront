@@ -1,3 +1,6 @@
+.signIn-form-div form input{
+    border: rgb(243 244 246) 1px solid;
+}
 
 [data-theme="dark"]  .signIn-div{
     
@@ -6,12 +9,12 @@
 }
 
 [data-theme="dark"]  .signIn-form-div{
-    background-color: rgb(2, 0, 36);
+    background-color: rgb(4, 2, 28);
 }
 
 [data-theme="dark"]  .signIn-form-div form input{
     background-color: rgb(249, 249, 249);
-    border: none;
+    border: white 1px solid;
     color: black;
 }
 
