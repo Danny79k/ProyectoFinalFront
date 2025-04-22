@@ -54,7 +54,7 @@ function SignIn() {
         </div>
 
         <div
-          className=" w-full max-w-md  rounded-3xl shadow-2xl p-8 space-y-4"
+          className="signIn-form-div w-full max-w-md  rounded-3xl shadow-2xl p-8 space-y-4"
         >
           <form className="space-y-4" method="POST">
             <div>
@@ -62,7 +62,7 @@ function SignIn() {
                 htmlFor="username"
                 className={`block text-sm font-medium `}
               >
-                Username
+                Email
               </label>
               <input
                 type="email"

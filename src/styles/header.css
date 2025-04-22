@@ -85,7 +85,7 @@ Darkmode
 
 [data-theme="dark"] .headerWelcome-div li{
     background-color: #070707;
-    box-shadow: #b3b3b3 0px 2px 0.5cap 0px;
+    box-shadow: #b3b3b3 0px 1.5px 0.5cap 0px;
 }   
 
 @media screen and (min-width: 950px) {
