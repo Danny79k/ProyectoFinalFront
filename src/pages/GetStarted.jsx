@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
 import "../styles/getStarted.css";
 import img from "../assets/Tele M.png";
+import { useFormStore } from "../store/useStore";
 
 function GetStarted() {
+  const { step, setStep, nextStep, prevStep } = useFormStore();
+
   return (
     <>
       <div className="getStarted-div flex flex-col  justify-center items-center gap-8">
@@ -14,27 +17,62 @@ function GetStarted() {
 
         <div className="getStarted-form-div w-full max-w-md shadow-2xl shadow-sky-900 p-8 space-y-4">
           <form className="space-y-4" method="POST">
+            <div className="flex flex-row justify-around items-center">
+              <span
+                className={` rounded-full p-3 w-5 h-5 flex items-center justify-center text-gray-500 font-semibold text-base ${
+                  step === 1
+                    ? "bg-blue-300 text-black"
+                    : "bg-gray-100 text-gray-500"
+                } `}
+                onClick={() => setStep(1)}
+              >
+                1
+              </span>
+
+              <span
+                className={` rounded-full p-3 w-5 h-5 flex items-center justify-center text-gray-500 font-semibold text-base ${
+                  step === 2
+                    ? "bg-blue-300 text-black"
+                    : "bg-gray-100 text-gray-500"
+                } `}
+                onClick={() => setStep(2)}
+              >
+                2
+              </span>
+
+              <span
+                className={` rounded-full p-3 w-5 h-5 flex items-center justify-center text-gray-500 font-semibold text-base ${
+                  step === 3
+                    ? "bg-blue-300 text-black"
+                    : "bg-gray-100 text-gray-500"
+                } `}
+                onClick={() => setStep(3)}
+              >
+                3
+              </span>
+            </div>
+
             <div>
-              <label htmlFor="username" className="block text-sm font-medium">
-                Username
+              <label htmlFor="Email" className="block text-sm font-medium">
+                Email
               </label>
               <input
                 type="email"
-                id="username"
-                name="username"
+                id="Email"
+                name="Email"
                 required
                 className="mt-1 block w-full py-1 border rounded-md focus:outline-none  bg-gray-100"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium">
-                Password
+              <label htmlFor="text" className="block text-sm font-medium">
+                Username
               </label>
               <input
-                type="password"
-                id="password"
-                name="password"
+                type="text"
+                id="text"
+                name="text"
                 required
                 autoComplete="off"
                 className="mt-1 block w-full py-1 border rounded-md focus:outline-none bg-gray-100"
