@@ -3,9 +3,9 @@ import "../styles/getStarted.css";
 import img from "../assets/Tele M.png";
 import { HiArrowRight } from "react-icons/hi";
 import { useFormStore } from "../store/useStore";
+import { toast } from "react-toastify";
 
 function GetStarted() {
-
   const {
     step,
     setStep,
@@ -28,48 +28,50 @@ function GetStarted() {
 
     if (step === 1) {
       if (!email || !username) {
-        alert("Debes completar ambos campos.");
+
+        //usando alertas con la libreria de ReactToastify (todo lo que tenga "toast" es de la libreria)
+        
+        toast.error("Debes completar ambos campos.");
         return;
       }
 
       if (!email.includes("@")) {
-        alert("El email no es válido.");
+        toast.warn("El email no es válido.");
         return;
       }
 
       if (username.length < 3) {
-        alert("El nombre de usuario debe tener al menos 3 caracteres.");
+        toast.warn("El nombre de usuario debe tener al menos 3 caracteres.");
         return;
       }
     }
 
     if (step === 2) {
       if (!password || !passwordConfirmation) {
-        alert("Debes completar ambos campos.");
+        toast.warn("Debes completar ambos campos.");
         return;
       }
 
       if (password !== passwordConfirmation) {
-        alert("Las contraseñas no coinciden.");
+        toast.error("Las contraseñas no coinciden.");
         return;
       }
 
       if (password.length < 6) {
-        alert("La contraseña debe tener al menos 6 caracteres.");
+        toast.warn("La contraseña debe tener al menos 6 caracteres.");
         return;
       }
-
     }
 
     if (step === 3 && !termsAccepted) {
-      alert("Debes aceptar los términos y condiciones.");
+      toast.warn("Debes aceptar los términos y condiciones.");
       return;
     }
 
     if (step === 3 && termsAccepted) {
-      alert("¡Bienvenido! Has completado el registro.");
-      setStep(1); 
-      return;// Se reinicia el paso al finalizar el registro mientras se puede guardar el usuario en la base de datos o lo que sea necesario
+      toast.success("Has completado el registro. ¡Bienvenido!");
+      setStep(1);
+      return; // Se reinicia el paso al finalizar el registro mientras se puede guardar el usuario en la base de datos o lo que sea necesario
     }
 
     nextStep();
