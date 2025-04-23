@@ -8,9 +8,10 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import { useUtilityMenu } from "./store/useStore";
 import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-
   const { isDarkMode } = useUtilityMenu();
 
   useEffect(() => {
@@ -34,6 +35,20 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+
+      {/* Toast notifications usando la libreria de ReactToastif para tener unos alerts esteticos y facil*/}
+      
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={isDarkMode ? "dark" : "light"}
+      />
     </>
   );
 }
