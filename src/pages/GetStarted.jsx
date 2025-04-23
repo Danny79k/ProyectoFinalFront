@@ -1,10 +1,79 @@
 import { NavLink } from "react-router-dom";
 import "../styles/getStarted.css";
 import img from "../assets/Tele M.png";
+import { HiArrowRight } from "react-icons/hi";
 import { useFormStore } from "../store/useStore";
 
 function GetStarted() {
-  const { step, setStep, nextStep, prevStep } = useFormStore();
+
+  const {
+    step,
+    setStep,
+    nextStep,
+    prevStep,
+    email,
+    username,
+    password,
+    passwordConfirmation,
+    termsAccepted,
+    setEmail,
+    setUsername,
+    setPassword,
+    setPasswordConfirmation,
+    setTermsAccepted,
+  } = useFormStore();
+
+  const handleNextStep = (e) => {
+    e.preventDefault(); //esta funcion es para evitar que el formulario se envíe y recargue la página y asi poder manejar todo desde zutand y tener control total de los pasos y datos
+
+    if (step === 1) {
+      if (!email || !username) {
+        alert("Debes completar ambos campos.");
+        return;
+      }
+
+      if (!email.includes("@")) {
+        alert("El email no es válido.");
+        return;
+      }
+
+      if (username.length < 3) {
+        alert("El nombre de usuario debe tener al menos 3 caracteres.");
+        return;
+      }
+    }
+
+    if (step === 2) {
+      if (!password || !passwordConfirmation) {
+        alert("Debes completar ambos campos.");
+        return;
+      }
+
+      if (password !== passwordConfirmation) {
+        alert("Las contraseñas no coinciden.");
+        return;
+      }
+
+      if (password.length < 6) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
+        return;
+      }
+
+    }
+
+    if (step === 3 && !termsAccepted) {
+      alert("Debes aceptar los términos y condiciones.");
+      return;
+    }
+
+    if (step === 3 && termsAccepted) {
+      alert("¡Bienvenido! Has completado el registro.");
+      setStep(1); 
+      return;// Se reinicia el paso al finalizar el registro mientras se puede guardar el usuario en la base de datos o lo que sea necesario
+    }
+
+    nextStep();
+  };
 
   return (
     <>
@@ -19,70 +88,175 @@ function GetStarted() {
           <form className="space-y-4" method="POST">
             <div className="flex flex-row justify-around items-center">
               <span
-                className={` rounded-full p-3 w-5 h-5 flex items-center justify-center text-gray-500 font-semibold text-base ${
+                className={` rounded-full p-3 w-5 h-5 flex items-center justify-center font-semibold text-base ${
                   step === 1
                     ? "bg-blue-300 text-black"
                     : "bg-gray-100 text-gray-500"
                 } `}
-                onClick={() => setStep(1)}
               >
                 1
               </span>
 
               <span
-                className={` rounded-full p-3 w-5 h-5 flex items-center justify-center text-gray-500 font-semibold text-base ${
+                className={` rounded-full p-3 w-5 h-5 flex items-center justify-center font-semibold text-base ${
                   step === 2
                     ? "bg-blue-300 text-black"
                     : "bg-gray-100 text-gray-500"
                 } `}
-                onClick={() => setStep(2)}
               >
                 2
               </span>
 
               <span
-                className={` rounded-full p-3 w-5 h-5 flex items-center justify-center text-gray-500 font-semibold text-base ${
+                className={` rounded-full p-3 w-5 h-5 flex items-center justify-center font-semibold text-base ${
                   step === 3
                     ? "bg-blue-300 text-black"
                     : "bg-gray-100 text-gray-500"
                 } `}
-                onClick={() => setStep(3)}
               >
                 3
               </span>
             </div>
 
-            <div>
-              <label htmlFor="Email" className="block text-sm font-medium">
-                Email
-              </label>
-              <input
-                type="email"
-                id="Email"
-                name="Email"
-                required
-                className="mt-1 block w-full py-1 border rounded-md focus:outline-none  bg-gray-100"
-              />
-            </div>
+            {step === 1 && (
+              <div>
+                <label htmlFor="Email" className="block text-sm font-medium">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="Email"
+                  name="Email"
+                  required
+                  autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="mt-1 block w-full py-1 border rounded-md focus:outline-none  bg-gray-100"
+                />
+              </div>
+            )}
+            {step === 1 && (
+              <div>
+                <label htmlFor="text" className="block text-sm font-medium">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  id="text"
+                  name="text"
+                  required
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  autoComplete="off"
+                  className="mt-1 block w-full py-1 border rounded-md focus:outline-none bg-gray-100"
+                />
+              </div>
+            )}
 
-            <div>
-              <label htmlFor="text" className="block text-sm font-medium">
-                Username
-              </label>
-              <input
-                type="text"
-                id="text"
-                name="text"
-                required
-                autoComplete="off"
-                className="mt-1 block w-full py-1 border rounded-md focus:outline-none bg-gray-100"
-              />
-            </div>
+            {step === 2 && (
+              <>
+                <input
+                  hidden
+                  type="text"
+                  name="email"
+                  value={email}
+                  autoComplete="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <div>
+                  <label htmlFor="newPassword">Password</label>
+                  <input
+                    type="password"
+                    id="newPassword"
+                    name="newPassword"
+                    required
+                    autoComplete="new-password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="mt-1 block w-full py-1 border rounded-md focus:outline-none  bg-gray-100"
+                  />
+                </div>
+              </>
+            )}
 
-            <div className="flex flex-row justify-between items-center w-32 mx-auto">
-              <button className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition">
-                Next
-              </button>
+            {step === 2 && (
+              <div>
+                <label
+                  htmlFor="passwordConfirmation"
+                  className="block text-sm font-medium"
+                >
+                  Password Confirmation
+                </label>
+                <input
+                  type="password"
+                  id="passwordConfirmation"
+                  name="passwordConfirmation"
+                  required
+                  autoComplete="new-password"
+                  value={passwordConfirmation}
+                  onChange={(e) => setPasswordConfirmation(e.target.value)}
+                  className="mt-1 block w-full py-1 border rounded-md focus:outline-none  bg-gray-100"
+                />
+              </div>
+            )}
+
+            {step === 3 && (
+              <div className="space-y-2">
+                <label htmlFor="terms" className="block text-sm font-medium">
+                  Términos y condiciones
+                </label>
+                <div className="flex items-center p-3 border rounded-md bg-gray-100">
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    name="terms"
+                    checked={termsAccepted}
+                    onChange={(e) => setTermsAccepted(e.target.checked)}
+                    className="w-5 h-5 text-red-600 bg-white border-gray-300 rounded focus:ring-red-500"
+                  />
+                  <label htmlFor="terms" className="ml-3 text-sm text-gray-700">
+                    Acepto los{" "}
+                    <NavLink
+                      to="/terms"
+                      target="_blank"
+                      className="text-red-700 hover:underline"
+                    >
+                      términos de servicio y políticas de seguridad
+                    </NavLink>
+                  </label>
+                </div>
+              </div>
+            )}
+
+            <div className="flex flex-row justify-around w-full mx-auto">
+              {(step === 2 || step === 3) && (
+                <button
+                  type="button"
+                  className="w-20 py-2 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-xl transition"
+                  onClick={prevStep}
+                >
+                  back
+                </button>
+              )}
+
+              {(step === 1 || step === 2) && (
+                <button
+                  type="button"
+                  className="w-20 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition"
+                  onClick={handleNextStep}
+                >
+                  Next
+                </button>
+              )}
+
+              {step === 3 && (
+                <button
+                  className="flex items-center justify-center text-2xl w-20 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl transition"
+                  onClick={handleNextStep}
+                >
+                  <HiArrowRight />
+                </button>
+              )}
             </div>
 
             <p className="text-center text-sm">or continue with</p>
