@@ -27,7 +27,7 @@ function SignIn() {
 
   return (
     <>
-      <div className="signIn-div flex flex-col  justify-center items-center gap-8">
+      <div className="signIn-div flex flex-col justify-center items-center">
         <div className="signIn-img-div flex justify-center items-center w-full">
           <img className="w-48 h-48 md:w-64 md:h-64" src={img} alt="img" />
         </div>
