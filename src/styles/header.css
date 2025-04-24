@@ -1,10 +1,58 @@
 .header-div {
-    display: flex;
     padding: 10px;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #dee2e6;
+    background-color: #f9f9fc;
+    border-bottom: none;
     height: 60px;
 }
+
+/* 
+
+
+CSS del header  para pantallas grandes
+
+
+*/
+
+.drop {
+    border-radius: 12px;
+    border: none
+}
+
+.drop-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.drop-text:hover {
+    background-color: #f9f9fc;
+    border-radius: 12px;
+}
+
+.drop-text svg {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.drop-text:hover svg {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.header-text2 {
+    border-radius: 50px;
+}
+
+.header-text2:hover {
+    background: #eafcff;
+    transition: 0.3s ease-in-out;
+}
+
 
 /* CSS de la animacion  */
 
@@ -35,7 +83,7 @@
     pointer-events: none;
 }
 
-/* Fin del CSS de la animacion  */
+/* CSS del Menu desplegable para telefonos  */
 
 .headerMenu-div {
     padding: 0 20px;
@@ -52,13 +100,15 @@
 }
 
 .headerMenu-div {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* scroll and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
-.headerWelcome-div li{
+.headerWelcome-div li {
     box-shadow: #4a4a4a 0px 2px 0.5cap 0px;
-}   
+}
 
 /* 
 
@@ -73,8 +123,7 @@ Darkmode
 */
 
 [data-theme="dark"] .header-div {
-    background-color: #171717;
-    border-bottom: 1px solid #495057;
+    background-color: #000415;
     color: #ffffff;
 }
 
@@ -83,14 +132,64 @@ Darkmode
     color: #ffffff;
 }
 
-[data-theme="dark"] .headerWelcome-div li{
+[data-theme="dark"] .drop {
+    background: #000;
+    box-shadow: 0 4px 6px #0c4a6e;
+}
+
+
+[data-theme="dark"] .drop-text:hover {
+    background-color: #00082e;
+    border-radius: 12px;
+}
+
+[data-theme="dark"] .header-text2:hover {
+    background: #0c4a6e;
+    transition: 0.3s ease-in-out;
+}
+
+[data-theme="dark"] .headerWelcome-div li {
     background-color: #070707;
-    box-shadow: #b3b3b3 0px 2px 0.5cap 0px;
-}   
+    box-shadow: #b3b3b3 0px 1.5px 0.5cap 0px;
+}
+
+
+/*
+
+
+
+Responsive design
+
+
+
+ */
+
 
 @media screen and (min-width: 950px) {
 
     .butom-header {
         display: none;
+    }
+
+    .TeleM-logo {
+        width: 100px;
+        height: 100px;
+        margin-left: 70px;
+    }
+
+}
+
+@media screen and (max-width: 950px) {
+    .header-lg-div {
+        display: none;
+    }
+
+    header {
+        justify-content: space-between;
+    }
+
+    .TeleM-logo {
+        width: 80px;
+        height: 80px;
     }
 }
