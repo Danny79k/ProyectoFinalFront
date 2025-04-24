@@ -78,7 +78,7 @@ function GetStarted() {
 
   return (
     <>
-      <div className="getStarted-div flex flex-col  justify-center items-center gap-8">
+      <div className="getStarted-div flex flex-col  justify-center items-center ">
         <div className="getStarted-img-div flex flex-col justify-center items-center w-full ">
         <h1 className="text-1 text-3xl font-bold text-center">Get Started</h1>
           <img className="w-28 h-28" src={img} alt="img" />
