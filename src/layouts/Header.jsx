@@ -221,7 +221,7 @@ function Header() {
                     <NavLink
                       target="_blank"
                       className="flex flex-row"
-                      to="https://github.com/Illian-Santiago/LocalEvents-Front/blob/Illian/src/layout/Aside.jsx"
+                      to="https://github.com/Danny79k/ProyectoFinalFront"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

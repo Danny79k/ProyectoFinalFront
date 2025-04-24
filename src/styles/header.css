@@ -52,7 +52,7 @@
 }
 
 .headerMenu-div {
-    -ms-overflow-style: none;  /* IE and Edge */
+    -ms-overflow-style: none;  /* scroll and Edge */
     scrollbar-width: none;  /* Firefox */
 }
 
@@ -88,9 +88,23 @@ Darkmode
     box-shadow: #b3b3b3 0px 1.5px 0.5cap 0px;
 }   
 
+
+/*
+
+
+
+Responsive design
+
+
+
+ */
+
+
 @media screen and (min-width: 950px) {
 
     .butom-header {
         display: none;
     }
+
+    
 }

@@ -28,13 +28,11 @@ function SignIn() {
   return (
     <>
       <div className="signIn-div flex flex-col  justify-center items-center gap-8">
-        <div className="flex justify-center items-center w-full ">
-          <img className="w-48 h-48" src={img} alt="img" />
+        <div className="signIn-img-div flex justify-center items-center w-full">
+          <img className="w-48 h-48 md:w-64 md:h-64" src={img} alt="img" />
         </div>
 
-        <div
-          className="signIn-form-div w-full max-w-md  rounded-3xl shadow-2xl p-8 space-y-4"
-        >
+        <div className="signIn-form-div w-full max-w-md rounded-3xl shadow-2xl shadow-sky-900 p-8 space-y-4">
           <form className="space-y-4" method="POST">
             <div>
               <label
