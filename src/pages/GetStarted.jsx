@@ -28,9 +28,8 @@ function GetStarted() {
 
     if (step === 1) {
       if (!email || !username) {
-
         //usando alertas con la libreria de ReactToastify (todo lo que tenga "toast" es de la libreria)
-        
+
         toast.error("Debes completar ambos campos.");
         return;
       }
@@ -80,10 +79,11 @@ function GetStarted() {
   return (
     <>
       <div className="getStarted-div flex flex-col  justify-center items-center gap-8">
-        <div className="flex flex-col justify-center items-center w-full ">
+        <div className="getStarted-img-div flex flex-col justify-center items-center w-full ">
+        <h1 className="text-1 text-3xl font-bold text-center">Get Started</h1>
           <img className="w-28 h-28" src={img} alt="img" />
 
-          <h1 className="text-3xl font-bold text-center">Get Started</h1>
+          <h1 className="text-2 text-3xl font-bold text-center">Get Started</h1>
         </div>
 
         <div className="getStarted-form-div w-full max-w-md shadow-2xl shadow-sky-900 p-8 space-y-4">
@@ -207,7 +207,7 @@ function GetStarted() {
                 <label htmlFor="terms" className="block text-sm font-medium">
                   Términos y condiciones
                 </label>
-                <div className="flex items-center p-3 border rounded-md bg-gray-100">
+                <div className="check-form flex items-center p-3 border rounded-md bg-gray-100">
                   <input
                     type="checkbox"
                     id="terms"
@@ -216,12 +216,15 @@ function GetStarted() {
                     onChange={(e) => setTermsAccepted(e.target.checked)}
                     className="w-5 h-5 text-red-600 bg-white border-gray-300 rounded focus:ring-red-500"
                   />
-                  <label htmlFor="terms" className="ml-3 text-sm text-gray-700">
+                  <label
+                    htmlFor="terms"
+                    className="check-text ml-3 text-sm text-gray-700"
+                  >
                     Acepto los{" "}
                     <NavLink
                       to="/terms"
                       target="_blank"
-                      className="text-red-700 hover:underline"
+                      className="check-link text-red-700 hover:underline"
                     >
                       términos de servicio y políticas de seguridad
                     </NavLink>
