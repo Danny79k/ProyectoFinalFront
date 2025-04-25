@@ -26,19 +26,28 @@ CSS del header  para pantallas grandes
 
 }
 
+.drop-icons{
+    margin-right: 6px;
+    background-color: rgb(235, 235, 235);
+    padding: 11px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20%;
+}
+
 .drop-text:hover {
     background-color: #f9f9fc;
     border-radius: 12px;
 }
 
-.drop-text svg {
+.drop-text .arrow {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.drop-text:hover svg {
+.drop-text:hover .arrow {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -49,7 +58,7 @@ CSS del header  para pantallas grandes
 }
 
 .header-text2:hover {
-    background: #eafcff;
+    background: #dff7fb;
     transition: 0.3s ease-in-out;
 }
 
@@ -137,6 +146,9 @@ Darkmode
     box-shadow: 0 4px 6px #0c4a6e;
 }
 
+[data-theme="dark"] .drop-icons{
+    background-color: #0c4a6e;
+}
 
 [data-theme="dark"] .drop-text:hover {
     background-color: #00082e;
@@ -144,7 +156,7 @@ Darkmode
 }
 
 [data-theme="dark"] .header-text2:hover {
-    background: #0c4a6e;
+    background: #0c4a6e  ;
     transition: 0.3s ease-in-out;
 }
 
@@ -173,7 +185,7 @@ Responsive design
 
     .TeleM-logo {
         width: 100px;
-        height: 100px;
+        height: 90px;
         margin-left: 70px;
     }
 
