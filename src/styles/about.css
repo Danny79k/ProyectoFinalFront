@@ -1,0 +1,86 @@
+.about-button {
+    background: linear-gradient(to right, #a4caff, #c590f4);
+    color: #000000;
+    box-shadow: 0 4px 10px rgba(118, 218, 255, 0.5);
+}
+
+
+/*
+
+
+
+
+
+
+Modo oscuro
+
+
+
+
+
+*/
+
+[data-theme="dark"] .about-container {
+    background-color: #000415;
+}
+
+[data-theme="dark"] .about-title {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .about-title span {
+    color: #3b82f6;
+
+}
+
+[data-theme="dark"] .about-subtitle {
+    color: #d1d5db;
+
+}
+
+[data-theme="dark"] .about-button {
+    background: linear-gradient(to right, #2563eb, #7c3aed);
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Responsive */
+
+/* Pantallas grandes desde 950px */
+@media screen and (min-width: 950px) {
+    .about-container {
+        padding: 80px 40px;
+    }
+
+    .about-title {
+        font-size: 5rem;
+    }
+
+    .about-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .about-button {
+        font-size: 1.2rem;
+        padding: 16px 36px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .about-container {
+        padding: 60px 20px;
+    }
+
+    .about-title {
+        font-size: 3rem;
+    }
+
+    .about-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .about-button {
+        font-size: 1rem;
+        padding: 12px 28px;
+    }
+}
