@@ -1,18 +1,61 @@
-
-.asideL{
-    background-color: #ebf2fb;
+.main {
+    border-radius: 20px;
 }
 
-.asideR{
-    background-color: #fdfdff;
+.asideR {
+    border-radius: 20px;
 }
 
-.main{
-    background-color: rgb(255, 255, 255)
+.admin-options{
+    border-radius: 40px;
 }
 
-.buscador{
-    background-color: #ffffff;
-    border-top-left-radius: 40px;
-    border-bottom-left-radius: 40px;
+.dark-mode-asideL button{
+    border-radius: 40px;
+}
+
+.admin-options:hover {
+    cursor: pointer;
+    color: #000000;
+}
+
+.custom-scroll::-webkit-scrollbar {
+    width: 0px;
+}
+
+.custom-scroll {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE y Edge */
+}
+
+/*
+
+
+
+darkmode 
+
+
+
+*/
+
+[data-theme="dark"] .main {
+    background-color: #000415;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .asideR {
+    background-color: #000415;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .asideL {
+    background-color: #1b1b1b;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .Playout {
+    background-color: #1b1b1b;
+    color: #ffffff;
 }
