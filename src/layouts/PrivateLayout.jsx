@@ -6,7 +6,7 @@ import "../styles/main.css";
 function PrivateLayout() {
   return (
     <>
-      <div className="flex fex-row  min-h-screen bg-white">
+      <div className="Playout flex fex-row  min-h-screen bg-gray-100">
         <AsideL />
         <Outlet />
         <AsideR />
