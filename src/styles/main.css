@@ -1,3 +1,11 @@
+/*
+
+
+    CSS de el Aside Izquierdo
+
+
+*/
+
 .main {
     border-radius: 20px;
 }
@@ -6,11 +14,11 @@
     border-radius: 20px;
 }
 
-.admin-options{
+.admin-options {
     border-radius: 40px;
 }
 
-.dark-mode-asideL button{
+.dark-mode-asideL button {
     border-radius: 40px;
 }
 
@@ -30,6 +38,15 @@
     /* IE y Edge */
 }
 
+.Al-links{
+    text-decoration: none;
+    color: #414141;
+}
+
+.Al-links:hover{
+    color: #000000;
+}
+
 /*
 
 
@@ -41,21 +58,110 @@ darkmode
 */
 
 [data-theme="dark"] .main {
-    background-color: #000415;
+    background-color: #1b1b1b;
     color: #ffffff;
 }
 
 [data-theme="dark"] .asideR {
-    background-color: #000415;
+    background-color: #1b1b1b;
     color: #ffffff;
 }
 
 [data-theme="dark"] .asideL {
-    background-color: #1b1b1b;
-    color: #ffffff;
+    background-color: #000000;
+    color: #c9c7c7;
 }
 
 [data-theme="dark"] .Playout {
-    background-color: #1b1b1b;
+    background-color: #000000;
     color: #ffffff;
+}
+
+[data-theme="dark"] .buscador input {
+    background-color: #1c1c1c;
+    color: #ffffff;
+    border-color: #242424;
+}
+
+[data-theme="dark"] .admin-options svg {
+    fill: #b6b7b7;
+}
+
+[data-theme="dark"] .admin-options:hover {
+    background-color: #242424;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .admin-options:hover svg {
+    fill: #ffffff;
+}
+
+[data-theme="dark"] .seguidos{
+    border-color: #536177;
+}
+
+[data-theme="dark"] .usuario-seguido:hover{
+    background-color: #242424;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .dark-mode-asideL button {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .dark-mode-asideL button:hover {
+    background-color: #242424;
+}
+
+[data-theme="dark"] .asideL__container div h3{
+    color: #ffffff;
+}
+
+
+[data-theme="dark"] .Al-links{
+    color: #afafaf;
+}
+
+[data-theme="dark"] .Al-links:hover{
+    color: #ffffff;
+}
+
+/*
+
+
+
+    CSS del Main   
+
+
+
+
+*/
+
+.main__container__header div{
+    border-radius: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+Darkmode
+
+
+
+
+*/
+
+[data-theme="dark"] .main__container__header div:hover{
+    background-color: #242424;
 }

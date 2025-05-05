@@ -5,7 +5,7 @@ import SignIn from "./pages/SignIn";
 import GetStarted from "./pages/GetStarted";
 import Contact from "./pages/Contact";
 import PrivateLayout from "./layouts/PrivateLayout";
-import Main from "./components/Main";
+import Main from "./pages/Main";
 import NotFound from "./pages/NotFound";
 import { useUtilityMenu } from "./store/useStore";
 import { useEffect } from "react";
