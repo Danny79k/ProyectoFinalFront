@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Seguidos from "./Seguidos";
 import { IoPersonSharp } from "react-icons/io5";
 import { BsClipboard2PlusFill } from "react-icons/bs";
@@ -5,12 +6,12 @@ import { RiUserFollowFill } from "react-icons/ri";
 import { useUtilityMenu } from "../store/useStore";
 
 function AsideL() {
-  const { isDarkMode, menuOpen, toggleTheme, toggleMenu } = useUtilityMenu();
+  const { isDarkMode, toggleTheme } = useUtilityMenu();
 
   return (
     <div className="asideL flex flex-col bg-gray-100 basis-[15%]">
-      <div className="asideL__container mt-2 flex flex-col flex-grow">
-        <div className="flex items-center mb-2 ml-2 p-1">
+      <div className="asideL__container mt-4 flex flex-col flex-grow">
+        <div className="flex items-center ml-2 p-1">
           <h3>Usuario</h3>
         </div>
 
@@ -22,27 +23,41 @@ function AsideL() {
           />
         </div>
 
-        <div className="ml-2 w-40 flex flex-col items-start justify-start mb-4 space-y-1 text-gray-700">
-          <div className="admin-options w-full flex flex-row items-center p-2 hover:bg-gray-200">
-            <IoPersonSharp className="text-cyan-800" />
-            <p className="text-sm ml-2">My Posts</p>
-          </div>
-          <div className="admin-options w-full flex flex-row items-center p-2 hover:bg-gray-200">
-            <BsClipboard2PlusFill className="text-green-800" />
-            <p className="text-sm ml-2">New Posts</p>
-          </div>
+        <div className="ml-2 w-40 flex flex-col items-start justify-start mb-4 space-y-1">
+          <NavLink className="w-full" to="/home">
+            <div className="admin-options flex flex-row items-center p-2 hover:bg-gray-200">
+              <IoPersonSharp className="text-cyan-900" />
+              <p className="text-sm ml-2">My Posts</p>
+            </div>
+          </NavLink>
+          <NavLink className="w-full" to="/home">
+            <div className="admin-options w-full flex flex-row items-center p-2 hover:bg-gray-200">
+              <BsClipboard2PlusFill className="text-green-900" />
+              <p className="text-sm ml-2">New Posts</p>
+            </div>
+          </NavLink>
         </div>
 
-        <div className="ml-2 flex flex-col items-start justify-center mb-4 space-y-1 text-gray-700">
+        <div className="ml-2 flex flex-col items-start justify-center mb-4 space-y-1">
           <div className="flex flex-row items-center p-2">
-            <RiUserFollowFill />
+            <RiUserFollowFill className="text-cyan-900" />
             <p className="text-sm ml-2">Following</p>
           </div>
           <Seguidos />
         </div>
 
-        <div>
-
+        <div className="ml-2 mt-5 flex flex-col items-start justify-center">
+          <div className="w-full flex flex-col p-2 space-y-2">
+            <NavLink to="/home">
+              <p className="text-xs Al-links">Suport</p>
+            </NavLink>
+            <NavLink to="/home">
+              <p className="text-xs  Al-links">Rules</p>
+            </NavLink>
+            <NavLink to="/home">
+              <p className="text-xs  Al-links">Documentation</p>
+            </NavLink>
+          </div>
         </div>
       </div>
 
