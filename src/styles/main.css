@@ -147,9 +147,6 @@ darkmode
 
 
 
-
-
-
 /*
 
 
@@ -165,3 +162,4 @@ Darkmode
 [data-theme="dark"] .main__container__header div:hover{
     background-color: #242424;
 }
+
