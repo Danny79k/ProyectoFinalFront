@@ -21,8 +21,8 @@ function Main() {
   };
 
   const getIconLink = () => {
-    if (location.pathname === "/home") return "/home/settings";
-    return "/home";
+    if (location.pathname === "/home/settings") return "/home";
+    return "/home/settings";
   };
 
   const getContent = () => {
