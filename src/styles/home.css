@@ -1,0 +1,23 @@
+.home-opcions{
+    border-bottom: #3f3f3f solid 1px;
+}
+
+
+/*
+
+
+
+Darkmode
+
+
+
+*/
+
+[data-theme="dark"] .home{
+    background-color: #1b1b1b;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .cambio:hover{
+    background-color: #242424;
+}
