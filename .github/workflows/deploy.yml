@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: deploy
-        uses: appleboy/ssh-action@latest
+        uses: appleboy/ssh-action@v0.1.8
         with:
           host: 93.189.90.34
           port: 2222
