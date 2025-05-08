@@ -9,7 +9,7 @@ jobs:
   name: Deploy to VPS
   runs-on: ubuntu-latest
   steps:
-    - name: deploy
+      - name: deploy
       uses: appleboy/ssh-action@latest
       with:
         host: 93.189.90.34
