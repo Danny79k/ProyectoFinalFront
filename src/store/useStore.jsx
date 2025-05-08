@@ -1,13 +1,25 @@
 import { create } from "zustand";
 
+const getInitialDarkMode = () => {
+  const stored = localStorage.getItem('isDarkMode');
+  return stored ? JSON.parse(stored) : false;
+};
+
 export const useUtilityMenu = create((set) => ({
   menuOpen: false,
-  isDarkMode: false,
+  isDarkMode: getInitialDarkMode(),
 
-  toggleTheme: () => set((state) => ({ isDarkMode: !state.isDarkMode })),
+  toggleTheme: () =>
+    set((state) => {
+      const newMode = !state.isDarkMode;
+      localStorage.setItem('isDarkMode', JSON.stringify(newMode));
+      return { isDarkMode: newMode };
+    }),
 
-  toggleMenu: () => set((state) => ({ menuOpen: !state.menuOpen })),
+  toggleMenu: () =>
+    set((state) => ({ menuOpen: !state.menuOpen })),
 }));
+
 
 export const useFormStore = create((set) => ({
   step: 1,
