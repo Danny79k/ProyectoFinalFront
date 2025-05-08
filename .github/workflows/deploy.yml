@@ -1,4 +1,5 @@
 name: deploy
+
 on:
   push:
     branches:
@@ -6,17 +7,18 @@ on:
 
 jobs:
   deploy:
-  name: Deploy to VPS
-  runs-on: ubuntu-latest
-  steps:
+    name: Deploy to VPS
+    runs-on: ubuntu-latest
+
+    steps:
       - name: deploy
-      uses: appleboy/ssh-action@latest
-      with:
-        host: 93.189.90.34
-        port: 2222
-        username: rafa
-        key: ${{ secrets.PRIVATE_KEY }}
-        script: |
-          cd /var/www/html/ProyectoFinalFront
-          git pull origin master
-          npm run build
+        uses: appleboy/ssh-action@latest
+        with:
+          host: 93.189.90.34
+          port: 2222
+          username: rafa
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            cd /var/www/html/ProyectoFinalFront
+            git pull origin master
+            npm run build
