@@ -9,7 +9,7 @@ import { HiArrowPathRoundedSquare } from "react-icons/hi2";
 import UseFetch from "./UseFetch";
 
 export function Home() {
-
+  const [activeOption, setActiveOption] = useState("Follow");
   const token = sessionStorage.getItem("token");
   const { data, loading, error } = UseFetch('https://jeffrey.informaticamajada.es/api/news', token);
 
@@ -118,8 +118,6 @@ export function Home() {
       redactor: "Sandra León",
     },
   ];
-
-  const [activeOption, setActiveOption] = useState("Follow");
 
   const handleOptionClick = (option) => {
     setActiveOption(option);
