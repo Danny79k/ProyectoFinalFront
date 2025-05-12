@@ -14,10 +14,11 @@ export function Home() {
   const { data, loading, error } = useFetch('https://jeffrey.informaticamajada.es/api/news', token);
 
   useEffect(() => {
-    if (data) {
+    if (data && data.length > 0) {
       console.log("Noticias recibidas:", data);
     }
-  }, [data]);
+  }, [data]); // Solo se ejecutará si `data` cambia
+  
   
 
   //aqui habria que hacerlo bonito, te lo dejo a ti rafa

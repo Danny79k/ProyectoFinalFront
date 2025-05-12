@@ -1,51 +1,55 @@
-import { useState, useEffect } from "react";
-
 const useFetch = (url, token) => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+  
     useEffect(() => {
-        let isMounted = true;
-
-        const fetchData = async () => {
-            try {
-                setLoading(true);
-                setError(null);
-
-                const response = await fetch(url, {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`,
-                    },
-                });
-
-                if (!response.ok) {
-                    throw new Error(`Error ${response.status}: ${response.statusText}`);
-                }
-
-                const result = await response.json();
-                if (isMounted) {
-                    setData(result);
-                    setLoading(false);
-                }
-            } catch (err) {
-                if (isMounted) {
-                    setError(err.message);
-                    setLoading(false);
-                }
+      let isMounted = true;
+  
+      const fetchData = async () => {
+        try {
+          setLoading(true);
+          setError(null);
+  
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
             }
-        };
-
+          });
+  
+          if (!response.ok) {
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
+          }
+  
+          const result = await response.json();
+          if (isMounted) {
+            setData((prevData) => {
+              if (JSON.stringify(prevData) !== JSON.stringify(result)) {
+                return result; // Solo actualiza el estado si los datos han cambiado
+              }
+              return prevData; // Evita actualizar si los datos son los mismos
+            });
+            setLoading(false);
+          }
+        } catch (err) {
+          if (isMounted) {
+            setError(err.message);
+            setLoading(false);
+          }
+        }
+      };
+  
+      if (token) {
         fetchData();
-
-        return () => {
-            isMounted = false;
-        };
+      }
+  
+      return () => {
+        isMounted = false;
+      };
     }, [url, token]);
-
+  
     return { data, loading, error };
-};
-
-export default useFetch;
+  };
+  
