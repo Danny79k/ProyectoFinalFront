@@ -10,7 +10,8 @@ import useFetch from "./UseFetch";
 
 export function Home() {
 
-  const { data, loading, error } = useFetch('https://jeffrey.informaticamajada.es/api/news');
+  const token = sessionStorage.getItem("token");
+  const { data, loading, error } = useFetch('https://jeffrey.informaticamajada.es/api/news', token);
 
   useEffect(() => {
     if (data) {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useFetch = (url) => {
+const useFetch = (url, token) => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -13,10 +13,13 @@ const useFetch = (url) => {
                 setLoading(true);
                 setError(null);
 
-                // Asegurar la cookie CSRF antes de cualquier llamada
-                await fetch("https://jeffrey.informaticamajada.es/sanctum/csrf-cookie", { credentials: "include" });
-
-                const response = await fetch(url, { credentials: "include" });
+                const response = await fetch(url, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
 
                 if (!response.ok) {
                     throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -40,7 +43,7 @@ const useFetch = (url) => {
         return () => {
             isMounted = false;
         };
-    }, [url]); // Se vuelve a ejecutar cuando cambia la URL
+    }, [url, token]);
 
     return { data, loading, error };
 };
