@@ -7,11 +7,13 @@ import Contact from "./pages/Contact";
 import PrivateLayout from "./layouts/PrivateLayout";
 import Main from "./pages/Main";
 import NotFound from "./pages/NotFound";
+import Home from "./components/Home";
+import Settings from "./components/Settings";
+import NewsDetail from "./components/NewsDetail";
 import { useUtilityMenu } from "./store/useStore";
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 function App() {
   const { isDarkMode } = useUtilityMenu();
@@ -34,9 +36,13 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Route>
 
-          <Route element={<PrivateLayout />} >
-            <Route path="/home" element={<Main />} />
-            <Route path="/home/:id" element={<Main />} />
+          <Route element={<PrivateLayout />}>
+            <Route path="/home" element={<Main />}>
+              <Route index element={<Home />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="newsDetail/:id" element={<NewsDetail />} />
+              <Route path="blog" element={<h1>Blog page</h1>} />
+            </Route>
           </Route>
 
           <Route path="*" element={<NotFound />} />

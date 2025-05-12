@@ -1,32 +1,34 @@
-
+import { NavLink } from "react-router-dom";
 
 export function News({ noticias }) {
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 w-full">
       {noticias.map((item) => (
-        <div
-          key={item.id}
-          className="news rounded-xl shadow flex flex-col cursor-pointer"
-        >
-          <img
-            src={item.imagen}
-            alt="Noticia"
-            className="w-full h-36 object-cover"
-          />
+        <NavLink to={`/home/newsDetail/${item.id}`} key={item.id}>
+          <div
+            key={item.id}
+            className="news rounded-xl shadow flex flex-col cursor-pointer"
+          >
+            <img
+              src={item.imagen}
+              alt="Noticia"
+              className="w-full h-40 object-cover"
+            />
 
-          <div className="p-4 flex flex-col gap-2 flex-1">
-            <p className="text-sm font-medium truncate">{item.titulo}</p>
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="badge-tipo text-xs px-2 py-1 rounded-full">
-                {item.tipo}
-              </span>
-              <span className="badge-categoria text-xs px-2 py-1 rounded-full">
-                {item.categoria}
-              </span>
-              <p className="text-xs truncate">{item.redactor}</p>
+            <div className="p-4 flex flex-col gap-2 flex-1">
+              <p className="text-sm font-medium truncate">{item.titulo}</p>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="badge-tipo text-xs px-2 py-1 rounded-full">
+                  {item.tipo}
+                </span>
+                <span className="badge-categoria text-xs px-2 py-1 rounded-full">
+                  {item.categoria}
+                </span>
+                <p className="text-xs truncate">{item.redactor}</p>
+              </div>
             </div>
           </div>
-        </div>
+        </NavLink>
       ))}
     </div>
   );

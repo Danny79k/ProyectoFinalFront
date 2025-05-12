@@ -42,3 +42,9 @@ export const useFormStore = create((set) => ({
 
   
 }));
+
+export const useNewsStore = create((set) => ({
+  selectedNews: null,
+  setSelectedNews: (news) => set({ selectedNews: news }),
+}));
+
