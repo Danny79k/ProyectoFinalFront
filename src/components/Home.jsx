@@ -10,7 +10,14 @@ import useFetch from "./UseFetch";
 
 export function Home() {
 
-  const { data, loading, error } = useFetch('https://jeffrey.informaticamajada.es/api/news'):
+  const { data, loading, error } = useFetch('https://jeffrey.informaticamajada.es/api/news');
+
+  useEffect(() => {
+    if (data) {
+      console.log("Noticias recibidas:", data);
+    }
+  }, [data]);
+  
 
   //aqui habria que hacerlo bonito, te lo dejo a ti rafa
 
@@ -28,8 +35,8 @@ export function Home() {
       contenido: "Se reportó una fuerte explosión en una fábrica del centro...",
       fecha: "2025-05-12 13:00",
       imagen: "https://i.pinimg.com/736x/6f/88/de/6f88de08f7463c2a28081c99c3b5bbbb.jpg",
-      tipo: "Nacional",https://rafael.informaticamajada.es/
-      categoria: "Sucesos",
+      tipo: "Nacional", https://rafael.informaticamajada.es/redactor
+        categoria: "Sucesos",
       redactor: "Carlos Méndez",
     },
     {
@@ -120,9 +127,8 @@ export function Home() {
     <div className="home flex flex-col w-full h-full p-4">
       <div className="home-opcion flex flex-row w-full h-full px-2">
         <div
-          className={`home-opcions flex flex-row justify-center items-center space-x-1 cursor-pointer ${
-            activeOption === "Follow" ? "opicions-active" : ""
-          }`}
+          className={`home-opcions flex flex-row justify-center items-center space-x-1 cursor-pointer ${activeOption === "Follow" ? "opicions-active" : ""
+            }`}
           onClick={() => handleOptionClick("Follow")}
         >
           <SiExercism className="size-5" />
@@ -130,9 +136,8 @@ export function Home() {
         </div>
 
         <div
-          className={`home-opcions flex flex-row justify-center items-center ml-7 space-x-1 cursor-pointer ${
-            activeOption === "List" ? "opicions-active" : ""
-          }`}
+          className={`home-opcions flex flex-row justify-center items-center ml-7 space-x-1 cursor-pointer ${activeOption === "List" ? "opicions-active" : ""
+            }`}
           onClick={() => handleOptionClick("List")}
         >
           <HiTemplate className="size-5" />
@@ -140,9 +145,8 @@ export function Home() {
         </div>
 
         <div
-          className={`home-opcions flex flex-row justify-center items-center ml-7 space-x-1 cursor-pointer ${
-            activeOption === "Breaking" ? "opicions-active" : ""
-          }`}
+          className={`home-opcions flex flex-row justify-center items-center ml-7 space-x-1 cursor-pointer ${activeOption === "Breaking" ? "opicions-active" : ""
+            }`}
           onClick={() => handleOptionClick("Breaking")}
         >
           <ImCalendar className="size-4" />
@@ -160,9 +164,11 @@ export function Home() {
         </div>
       </div>
 
-      <div className="home-content flex flex-row p-2 mt-4 h-[77vh] overflow-hidden overflow-y-auto">
-        <News noticias={data} />
-      </div>
+      {data && (
+        <div className="home-content flex flex-row p-2 mt-4 h-[77vh] overflow-hidden overflow-y-auto">
+          <News noticias={data}/>
+        </div>
+      )}
     </div>
   );
 }
