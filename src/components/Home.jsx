@@ -166,7 +166,7 @@ export function Home() {
 
       {data && (
         <div className="home-content flex flex-row p-2 mt-4 h-[77vh] overflow-hidden overflow-y-auto">
-          <News noticias={data}/>
+          <News noticias={data.data}/>
         </div>
       )}
     </div>
