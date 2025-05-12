@@ -1,5 +1,14 @@
-.home-opcions{
-    border-bottom: #3f3f3f solid 1px;
+.home-opcion {
+    border-bottom: #b6b7b7 solid 1px;
+}
+
+.home-opcions {
+    border-bottom: #ffffff solid 2px;
+}
+
+.opicions-active {
+    border-bottom: #000000 solid 2px;
+    transition: all 0.3s ease-in-out;
 }
 
 
@@ -13,11 +22,84 @@ Darkmode
 
 */
 
-[data-theme="dark"] .home{
+[data-theme="dark"] .home {
     background-color: #1b1b1b;
     color: #ffffff;
 }
 
-[data-theme="dark"] .cambio:hover{
+[data-theme="dark"] .cambio:hover {
     background-color: #242424;
+}
+
+[data-theme="dark"] .home-opcion {
+    border-bottom: #3f3f3f solid 1px;
+}
+
+[data-theme="dark"] .home-opcions {
+    color: rgb(155, 155, 155);
+    border-bottom: #1b1b1b solid 2px;
+}
+
+[data-theme="dark"] .opicions-active {
+    color: rgb(255, 255, 255);
+    border-bottom: #ffffff solid 1px;
+}
+
+
+/* 
+
+
+
+News
+
+
+
+*/
+.home-content {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.home-content::-webkit-scrollbar {
+    width: 0px;
+}
+
+
+.news {
+    background-color: #f5f5f5;
+    color: #000000;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+}
+
+.news:hover {
+    background-color: #eaeaea;
+}
+
+/* Dark Mode */
+[data-theme="dark"] .news {
+    background-color: #2b2b2b;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .news:hover {
+    background-color: #323232;
+}
+
+/* Badges */
+.badge-tipo {
+    background-color: #3b82f6;
+    /* blue-600 */
+    color: #ffffff;
+}
+
+.badge-categoria {
+    background-color: #ea580c;
+    /* orange-600 */
+    color: #ffffff;
+}
+
+/* Para que se vea limpio el texto */
+.news p {
+    color: inherit;
 }
