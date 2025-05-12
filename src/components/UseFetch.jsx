@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 // Este es el hook useFetch que realiza la llamada a la API
-const useFetch = (url, token) => {
+const UseFetch = (url, token) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -56,4 +56,4 @@ const useFetch = (url, token) => {
   return { data, loading, error };
 };
 
-export default useFetch; // Aquí exportamos el hook
+export default UseFetch; // Aquí exportamos el hook
