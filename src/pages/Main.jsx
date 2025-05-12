@@ -18,11 +18,11 @@ function Main() {
     if (location.pathname === "/home/settings")
       return <HiHome className="size-6" />;
     return <FiMoreVertical className="size-6" />;
-  };
+  }; 
 
   const getIconLink = () => {
-    if (location.pathname === "/home") return "/home/settings";
-    return "/home";
+    if (location.pathname === "/home/settings") return "/home";
+    return "/home/settings";
   };
 
   const getContent = () => {
