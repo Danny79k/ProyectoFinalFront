@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/home.css";
 import News from "./News";
@@ -6,8 +6,18 @@ import { HiTemplate } from "react-icons/hi";
 import { ImCalendar } from "react-icons/im";
 import { SiExercism } from "react-icons/si";
 import { HiArrowPathRoundedSquare } from "react-icons/hi2";
+import useFetch from "./UseFetch";
 
 export function Home() {
+
+  const { data, loading, error } = useFetch('https://jeffrey.informaticamajada.es/api/news'):
+
+  //aqui habria que hacerlo bonito, te lo dejo a ti rafa
+
+  if (loading) return <div className="flex justify-center items-center h-full">Cargando...</div>;
+  if (error) return <div className="flex justify-center items-center h-full">Error: {error}</div>;
+
+  //
 
   // Simulación de datos de noticias
   // En una aplicación real, estos datos vendrían de una API o base de datos
@@ -18,7 +28,7 @@ export function Home() {
       contenido: "Se reportó una fuerte explosión en una fábrica del centro...",
       fecha: "2025-05-12 13:00",
       imagen: "https://i.pinimg.com/736x/6f/88/de/6f88de08f7463c2a28081c99c3b5bbbb.jpg",
-      tipo: "Nacional",
+      tipo: "Nacional",https://rafael.informaticamajada.es/
       categoria: "Sucesos",
       redactor: "Carlos Méndez",
     },
@@ -151,7 +161,7 @@ export function Home() {
       </div>
 
       <div className="home-content flex flex-row p-2 mt-4 h-[77vh] overflow-hidden overflow-y-auto">
-        <News noticias={fakeNews} />
+        <News noticias={data} />
       </div>
     </div>
   );
