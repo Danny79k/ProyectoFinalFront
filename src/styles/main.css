@@ -12,10 +12,6 @@
     overflow: hidden;
 }
 
-.asideR {
-    border-radius: 20px;
-}
-
 .admin-options {
     border-radius: 40px;
 }
@@ -60,11 +56,6 @@ darkmode
 */
 
 [data-theme="dark"] .main {
-    background-color: #1b1b1b;
-    color: #ffffff;
-}
-
-[data-theme="dark"] .asideR {
     background-color: #1b1b1b;
     color: #ffffff;
 }
