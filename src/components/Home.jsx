@@ -6,12 +6,12 @@ import { HiTemplate } from "react-icons/hi";
 import { ImCalendar } from "react-icons/im";
 import { SiExercism } from "react-icons/si";
 import { HiArrowPathRoundedSquare } from "react-icons/hi2";
-import useFetch from "./UseFetch";
+import { UseFetch } from "./UseFetch";
 
 export function Home() {
 
   const token = sessionStorage.getItem("token");
-  const { data, loading, error } = useFetch('https://jeffrey.informaticamajada.es/api/news', token);
+  const { data, loading, error } = UseFetch('https://jeffrey.informaticamajada.es/api/news', token);
 
   useEffect(() => {
     if (data && data.length > 0) {
