@@ -35,8 +35,8 @@ export function Home() {
       contenido: "Se reportó una fuerte explosión en una fábrica del centro...",
       fecha: "2025-05-12 13:00",
       imagen: "https://i.pinimg.com/736x/6f/88/de/6f88de08f7463c2a28081c99c3b5bbbb.jpg",
-      tipo: "Nacional", https://rafael.informaticamajada.es/redactor
-        categoria: "Sucesos",
+      tipo: "Nacional",
+      categoria: "Sucesos",
       redactor: "Carlos Méndez",
     },
     {
