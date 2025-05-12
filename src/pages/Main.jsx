@@ -18,7 +18,7 @@ function Main() {
     if (location.pathname === "/home/settings")
       return <HiHome className="size-6" />;
     return <FiMoreVertical className="size-6" />;
-  };
+  }; 
 
   const getIconLink = () => {
     if (location.pathname === "/home/settings") return "/home";

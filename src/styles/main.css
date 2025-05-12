@@ -8,6 +8,8 @@
 
 .main {
     border-radius: 20px;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .asideR {
