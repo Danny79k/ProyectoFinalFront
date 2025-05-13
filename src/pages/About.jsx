@@ -7,7 +7,7 @@ const About = () => {
       <div className="flex items-center bg-white about-container">
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-black text-5xl md:text-7xl font-bold leading-tight about-title">
-            Welcome to<br />
+            Welcome to Iasi<br />
             <span className="text-blue-600">Tele M news</span>
           </h1>
 

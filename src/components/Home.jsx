@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/home.css";
 import News from "./News";
@@ -6,8 +6,27 @@ import { HiTemplate } from "react-icons/hi";
 import { ImCalendar } from "react-icons/im";
 import { SiExercism } from "react-icons/si";
 import { HiArrowPathRoundedSquare } from "react-icons/hi2";
+import UseFetch from "./UseFetch";
 
 export function Home() {
+  const [activeOption, setActiveOption] = useState("Follow");
+  const token = sessionStorage.getItem("token");
+  const { data, loading, error } = UseFetch('https://jeffrey.informaticamajada.es/api/news', token);
+
+  useEffect(() => {
+    if (data && data.length > 0) {
+      console.log("Noticias recibidas:", data);
+    }
+  }, [data]); // Solo se ejecutará si `data` cambia
+  
+  
+
+  //aqui habria que hacerlo bonito, te lo dejo a ti rafa
+
+  if (loading) return <div className="flex justify-center items-center h-full">Cargando...</div>;
+  if (error) return <div className="flex justify-center items-center h-full">Error: {error}</div>;
+
+  //
 
   // Simulación de datos de noticias
   // En una aplicación real, estos datos vendrían de una API o base de datos
@@ -100,8 +119,6 @@ export function Home() {
     },
   ];
 
-  const [activeOption, setActiveOption] = useState("Follow");
-
   const handleOptionClick = (option) => {
     setActiveOption(option);
   };
@@ -110,9 +127,8 @@ export function Home() {
     <div className="home flex flex-col w-full h-full p-4">
       <div className="home-opcion flex flex-row w-full h-full px-2">
         <div
-          className={`home-opcions flex flex-row justify-center items-center space-x-1 cursor-pointer ${
-            activeOption === "Follow" ? "opicions-active" : ""
-          }`}
+          className={`home-opcions flex flex-row justify-center items-center space-x-1 cursor-pointer ${activeOption === "Follow" ? "opicions-active" : ""
+            }`}
           onClick={() => handleOptionClick("Follow")}
         >
           <SiExercism className="size-5" />
@@ -120,9 +136,8 @@ export function Home() {
         </div>
 
         <div
-          className={`home-opcions flex flex-row justify-center items-center ml-7 space-x-1 cursor-pointer ${
-            activeOption === "List" ? "opicions-active" : ""
-          }`}
+          className={`home-opcions flex flex-row justify-center items-center ml-7 space-x-1 cursor-pointer ${activeOption === "List" ? "opicions-active" : ""
+            }`}
           onClick={() => handleOptionClick("List")}
         >
           <HiTemplate className="size-5" />
@@ -130,9 +145,8 @@ export function Home() {
         </div>
 
         <div
-          className={`home-opcions flex flex-row justify-center items-center ml-7 space-x-1 cursor-pointer ${
-            activeOption === "Breaking" ? "opicions-active" : ""
-          }`}
+          className={`home-opcions flex flex-row justify-center items-center ml-7 space-x-1 cursor-pointer ${activeOption === "Breaking" ? "opicions-active" : ""
+            }`}
           onClick={() => handleOptionClick("Breaking")}
         >
           <ImCalendar className="size-4" />
@@ -150,9 +164,11 @@ export function Home() {
         </div>
       </div>
 
-      <div className="home-content flex flex-row p-2 mt-4 h-[77vh] overflow-hidden overflow-y-auto">
-        <News noticias={fakeNews} />
-      </div>
+      {data && (
+        <div className="home-content flex flex-row p-2 mt-4 h-[77vh] overflow-hidden overflow-y-auto">
+          <News noticias={data.data}/>
+        </div>
+      )}
     </div>
   );
 }

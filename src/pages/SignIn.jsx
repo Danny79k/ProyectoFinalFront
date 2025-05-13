@@ -19,7 +19,7 @@ function SignIn() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost/api/login", /*esta url es un ejemplo local hay que cambiarlo cuando se vaya a desplegar*/{
+      const res = await fetch("https://jeffrey.informaticamajada.es/api/login", /*esta url es un ejemplo local hay que cambiarlo cuando se vaya a desplegar*/{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
