@@ -42,6 +42,7 @@ function App() {
               <Route path="settings" element={<Settings />} />
               <Route path="newsDetail/:id" element={<NewsDetail />} />
               <Route path="blog" element={<h1>Blog page</h1>} />
+              <Route path="/add_news"></Route>
             </Route>
           </Route>
 
