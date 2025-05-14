@@ -15,8 +15,8 @@ export const AddNews = () => {
                 <option value="nacional">nacional</option>
                 <option value="internacional">internacional</option>
             </select>
-            <input type="check" value='urgent' />
-            <input type="check" value='premium' />
+            <input type="checkbox" value='urgent' />
+            <input type="checkbox" value='premium' />
             <input type="number" />
         </form>
     </div>
