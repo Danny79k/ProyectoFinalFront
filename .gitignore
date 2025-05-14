@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# claves
+
+/storage/key
+/storage/key.pub

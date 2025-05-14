@@ -1,8 +1,19 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useUtilityMenu } from "../store/useStore";
 import { useEffect } from "react";
 import img from "../assets/Tele M.png";
 import "../styles/header.css";
+import { FaCodeBranch } from "react-icons/fa6";
+import { HiChevronRight } from "react-icons/hi";
+import { IoDocumentTextSharp } from "react-icons/io5";
+import { TiArrowShuffle } from "react-icons/ti";
+import { IoSettingsSharp } from "react-icons/io5";
+import { FaHandHoldingHand } from "react-icons/fa6";
+import { FaFacebookSquare } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa6";
+
 
 function Header() {
   const { isDarkMode, menuOpen, toggleTheme, toggleMenu } = useUtilityMenu();
@@ -13,11 +24,173 @@ function Header() {
 
   return (
     <>
-      <header className="header-div w-[100%] flex justify-between items-center">
-        <NavLink to="/" className="overflow-hidden">
-          <img src={img} alt="Tele M" className="size-20" />
+      <header className="header-div w-[100%] flex items-center">
+        <NavLink to="/" className="TeleM-logo overflow-hidden">
+          <img src={img} alt="Tele M" className="size-full" />
         </NavLink>
 
+        <div className="header-lg-div flex flex-row justify-between w-full items-center">
+          <div className="flex flex-row items-center space-x-7 ml-10">
+            <NavLink to="pricing">
+              <h3 className="cursor-pointer">Pricing</h3>
+            </NavLink>
+            <div className="relative group">
+              <h3 className="cursor-pointer p-2">Resources</h3>
+
+              {/* Dropdown */}
+              <div className="drop absolute hidden group-hover:flex flex-col top-10 left-0 bg-white border rounded shadow-lg p-3 w-64 z-50">
+                <NavLink to="/documentation" className="drop-text px-4 py-2 ">
+                  <div className="flex flex-row items-center">
+                    <IoDocumentTextSharp className="drop-icons" />
+                    <div>
+                      <h3 className="text-sm">Documentation</h3>
+                      <p className="text-xs text-gray-500">About our project</p>
+                    </div>
+                  </div>
+                  <HiChevronRight className="arrow" />
+                </NavLink>
+
+                <NavLink to="/rules" className="drop-text px-4 py-2">
+                  <div className="flex flex-row items-center">
+                    <IoSettingsSharp className="drop-icons" />
+                    <div>
+                      <h3 className="text-sm">Rules</h3>
+                      <p className="text-xs text-gray-500">
+                        Responsible publications
+                      </p>
+                    </div>
+                  </div>
+                  <HiChevronRight className="arrow" />
+                </NavLink>
+
+                <NavLink to="/suport" className="drop-text px-4 py-2">
+                  <div className="flex flex-row items-center">
+                    <FaHandHoldingHand className="drop-icons" />
+                    <div>
+                      <h3 className="text-sm">Suport</h3>
+                      <p className="text-xs text-gray-500">
+                        We are here to help
+                      </p>
+                    </div>
+                  </div>
+                  <HiChevronRight className="arrow" />
+                </NavLink>
+
+                <button
+                  onClick={toggleTheme}
+                  className="drop-text flex items-center px-4 py-2 hover:bg-gray-100"
+                >
+                  {isDarkMode ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="white"
+                      className="drop-icons"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 1.992a10 10 0 1 0 9.236 13.838c.341 -.82 -.476 -1.644 -1.298 -1.31a6.5 6.5 0 0 1 -6.864 -10.787l.077 -.08c.551 -.63 .113 -1.653 -.758 -1.653h-.266l-.068 -.006l-.06 -.002z" />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      strokeWidth="1.25"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="drop-icons"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+                    </svg>
+                  )}
+                  <span className="mr-2">Dark Mode</span>
+                  <TiArrowShuffle className="ml-auto arrow" />
+                </button>
+              </div>
+            </div>
+
+            <div className="relative group">
+              <h3 className="cursor-pointer p-2">Community</h3>
+
+              {/* Dropdown */}
+              <div className="drop absolute hidden group-hover:flex flex-col top-10 left-0 bg-white border rounded shadow-lg p-3 w-60 z-50">
+                <NavLink
+                  target="_blank"
+                  to="https://www.facebook.com/Telem.ro"
+                  className="drop-text px-4 py-2 "
+                >
+                  <div className="flex flex-row items-center">
+                    <FaFacebookSquare className="drop-icons" />
+                    <div>
+                      <h3 className="text-sm">Facebook</h3>
+                      <p className="text-xs text-gray-500">Follow us</p>
+                    </div>
+                  </div>
+                  <HiChevronRight className="arrow" />
+                </NavLink>
+
+                <NavLink
+                  target="_blank"
+                  to="https://www.tiktok.com/@telem.ro?_t=ZN-8vNqXtge5DS&_r=1"
+                  className="drop-text px-4 py-2 "
+                >
+                  <div className="flex flex-row items-center">
+                    <FaTiktok className="drop-icons" />
+                    <div>
+                      <h3 className="text-sm">Tiktok</h3>
+                      <p className="text-xs text-gray-500">Follow the news</p>
+                    </div>
+                  </div>
+                  <HiChevronRight className="arrow" />
+                </NavLink>
+                <NavLink
+                  target="_blank"
+                  to="https://github.com/Danny79k/ProyectoFinalFront"
+                  className="drop-text px-4 py-2"
+                >
+                  <div className="flex flex-row items-center">
+                    <FaGithub className="drop-icons" />
+                    <div>
+                      <h3 className="text-sm">Github</h3>
+                      <p className="text-xs text-gray-500">Star Us</p>
+                    </div>
+                  </div>
+                  <HiChevronRight className="arrow" />
+                </NavLink>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-row items-center space-x-4 mr-8">
+            <NavLink
+              target="_blank"
+              to="https://github.com/Danny79k/ProyectoFinalFront"
+            >
+              <div className="header-text2 flex flex-row items-center space-x-1 mr-2 cursor-pointer px-5 py-2">
+                <FaCodeBranch className="mt-1 text-cyan-600" />
+                <h3>Star Us</h3>
+              </div>
+            </NavLink>
+            <NavLink to="signIn">
+              <h3 className="header-text2 cursor-pointer px-5 py-2">
+                Sign In{" "}
+              </h3>
+            </NavLink>
+            <NavLink to="getStarted">
+              <h3 className="header-text2 cursor-pointer px-5 py-2">
+                Get Started
+              </h3>
+            </NavLink>
+          </div>
+        </div>
+
+        {/* Hamburger Menu Icon */}
         <button
           className={`butom-header mr-2 ${
             menuOpen ? "header-rotate-y-hidden" : "header-rotate-y"
@@ -66,6 +239,7 @@ function Header() {
         </button>
       </header>
 
+      {/* Mobile Menu */}
       <div
         className={`headerMenu-div flex flex-col absolute overflow-auto ${
           menuOpen ? "header-fade" : "header-fade-hidden"
@@ -75,7 +249,7 @@ function Header() {
           className=" px-4 py-4 space-y-2 divide-y divide-gray-500"
           onClick={toggleMenu}
         >
-          <li className="py-2">Prcing</li>
+          <li className="py-2">Pricing</li>
           <li className="py-2">
             Resources
             <div>
@@ -221,7 +395,7 @@ function Header() {
                     <NavLink
                       target="_blank"
                       className="flex flex-row"
-                      to="https://github.com/Illian-Santiago/LocalEvents-Front/blob/Illian/src/layout/Aside.jsx"
+                      to="https://github.com/Danny79k/ProyectoFinalFront"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

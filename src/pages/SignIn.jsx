@@ -19,7 +19,7 @@ function SignIn() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost/api/login", /*esta url es un ejemplo local hay que cambiarlo cuando se vaya a desplegar*/{
+      const res = await fetch("https://jeffrey.informaticamajada.es/api/login", /*esta url es un ejemplo local hay que cambiarlo cuando se vaya a desplegar*/{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -48,21 +48,19 @@ function SignIn() {
 // ======================================================================
   return (
     <>
-      <div className="signIn-div flex flex-col  justify-center items-center gap-8">
-        <div className="flex justify-center items-center w-full ">
-          <img className="w-48 h-48" src={img} alt="img" />
+      <div className="signIn-div flex flex-col justify-center items-center">
+        <div className="signIn-img-div flex justify-center items-center w-full">
+          <img className="w-48 h-48 md:w-64 md:h-64" src={img} alt="img" />
         </div>
 
-        <div
-          className=" w-full max-w-md  rounded-3xl shadow-2xl p-8 space-y-4"
-        >
+        <div className="signIn-form-div w-full max-w-md rounded-3xl shadow-2xl shadow-sky-900 p-8 space-y-4">
           <form className="space-y-4" method="POST">
             <div>
               <label
                 htmlFor="username"
                 className={`block text-sm font-medium `}
               >
-                Username
+                Email
               </label>
               <input
                 type="email"
