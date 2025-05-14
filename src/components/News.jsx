@@ -7,6 +7,7 @@ export function News({ noticias }) {
   if (loading) return <div className="flex justify-center items-center h-full">Cargando...</div>;
   if (error) return <div className="flex justify-center items-center h-full">Error: {error}</div>;
   const users = data.data
+  console.log(users)
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 w-full">
       {noticias.map((item) => (
