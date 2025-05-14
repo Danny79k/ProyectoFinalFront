@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import UseFetch from "./UseFetch";
 
 export function News({ noticias }) {
-  const {data , error, loading} = UseFetch('https://jeffrey.informaticamajada.es/api/user', sessionStorage.getItem("token"));
+  const {data , error, loading} = UseFetch('https://jeffrey.informaticamajada.es/api/users', sessionStorage.getItem("token"));
   if (loading) return <div className="flex justify-center items-center h-full">Cargando...</div>;
   if (error) return <div className="flex justify-center items-center h-full">Error: {error}</div>;
   const users = data.data
