@@ -38,7 +38,7 @@ export function Home() {
       fecha: "2025-05-12 13:00",
       imagen: "https://i.pinimg.com/736x/6f/88/de/6f88de08f7463c2a28081c99c3b5bbbb.jpg",
       tipo: "Nacional",
-      categoria: "Sucesos",
+      categoria: "Sucesos",  const [activeOption, setActiveOption] = useState("Follow");
       redactor: "Carlos Méndez",
     },
     {

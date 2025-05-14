@@ -1,6 +1,11 @@
 import { NavLink } from "react-router-dom";
+import UseFetch from "./UseFetch";
 
 export function News({ noticias }) {
+  const {data , error, loading} = UseFetch('https://jeffrey.informaticamajada.es/api/user', sessionStorage.getItem("token"));
+  if (loading) return <div className="flex justify-center items-center h-full">Cargando...</div>;
+  if (error) return <div className="flex justify-center items-center h-full">Error: {error}</div>;
+  const users = data.data
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 w-full">
       {noticias.map((item) => (
@@ -24,7 +29,7 @@ export function News({ noticias }) {
                 <span className="badge-categoria text-xs px-2 py-1 rounded-full">
                   {item.category_id}
                 </span>
-                <p className="text-xs truncate">{item.user_id}</p>
+                <p className="text-xs truncate">{users.filter(user => user.id == item.user_id)}</p>
               </div>
             </div>
           </div>
