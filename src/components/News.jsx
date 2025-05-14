@@ -31,7 +31,7 @@ export function News({ noticias }) {
                 <span className="badge-categoria text-xs px-2 py-1 rounded-full">
                   {item.category_id}
                 </span>
-                <p className="text-xs truncate">{users.filter(user => user.id == item.user_id)?.name}</p>
+                <p className="text-xs truncate">{users.find(user => user.id == item.user_id)?.name}</p>
               </div>
             </div>
           </div>
