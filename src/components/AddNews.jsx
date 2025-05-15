@@ -5,6 +5,8 @@ export const AddNews = () => {
   const token = sessionStorage.getItem("token")
   const currentUser = sessionStorage.getItem("user")
 
+  console.log(currentUser)
+
   const { data, error, loading } = UseFetch('https://jeffrey.informaticamajada.es/api/categories', token);
 
   if (loading) return <div className="flex justify-center items-center h-full">Cargando...</div>;
