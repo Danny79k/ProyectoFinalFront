@@ -68,8 +68,8 @@ export const AddNews = () => {
   <select name="type" required>
     <option value="local">Local</option>
     <option value="regional">Regional</option>
-    <option value="nacional">Nacional</option>
-    <option value="internacional">Internacional</option>
+    <option value="national">Nacional</option>
+    <option value="international">Internacional</option>
   </select>
 
   <label>Urgent</label>
@@ -87,7 +87,8 @@ export const AddNews = () => {
     ))}
   </select>
 
-  <p>You are uploading this news as <strong>{currentUser?.name || currentUser}</strong></p>
+  <p>You are uploading this news as <strong>{currentUser?.name}</strong></p>
+  <input type="text" className='hidden' value={currentUser.id}/>
 
   <button type="submit" className="bg-blue-500 text-white p-2 rounded">Enviar</button>
 </form>
