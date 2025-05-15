@@ -56,6 +56,7 @@ export const AddNews = () => {
   return (
     <div>
 
+
       <form
         onSubmit={handleSubmit}
         encType="multipart/form-data"
@@ -101,6 +102,7 @@ export const AddNews = () => {
 
         <button type="submit" className="bg-blue-500 text-white p-2 rounded">Enviar</button>
       </form>
+
 
     </div>
   )
