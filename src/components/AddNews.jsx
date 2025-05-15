@@ -5,6 +5,8 @@ export const AddNews = () => {
   const token = sessionStorage.getItem("token")
   const currentUser = sessionStorage.getItem("user")
 
+  console.log(currentUser)
+
   const { data, error, loading } = UseFetch('https://jeffrey.informaticamajada.es/api/categories', token);
 
   if (loading) return <div className="flex justify-center items-center h-full">Cargando...</div>;
@@ -15,8 +17,7 @@ export const AddNews = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-  
-    // Opcionalmente, puedes marcar los checkboxes como booleanos:
+
     formData.set("urgent", formData.get("urgent") ? 1 : 0);
     formData.set("premium", formData.get("premium") ? 1 : 0);
   
@@ -25,7 +26,6 @@ export const AddNews = () => {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
-          // No pongas Content-Type, fetch lo añade automáticamente al usar FormData
         },
         body: formData
       });
@@ -38,7 +38,6 @@ export const AddNews = () => {
   
       const result = await response.json();
       console.log('Noticia subida correctamente:', result);
-      // Puedes redirigir o mostrar un mensaje de éxito
     } catch (error) {
       console.error('Error en la subida:', error);
     }
@@ -62,14 +61,14 @@ export const AddNews = () => {
   <input type="date" name="date" required />
 
   <label>Image</label>
-  <input type="file" name="image" accept="image/*" required />
+  <input type="file" name="image" accept="image/*"/>
 
   <label>Type</label>
   <select name="type" required>
     <option value="local">Local</option>
     <option value="regional">Regional</option>
-    <option value="nacional">Nacional</option>
-    <option value="internacional">Internacional</option>
+    <option value="national">Nacional</option>
+    <option value="international">Internacional</option>
   </select>
 
   <label>Urgent</label>
@@ -87,7 +86,8 @@ export const AddNews = () => {
     ))}
   </select>
 
-  <p>You are uploading this news as <strong>{currentUser?.name || currentUser}</strong></p>
+  <p>You are uploading this news as <strong>{currentUser?.name}</strong></p>
+  <input type="text" className='hidden' value={currentUser.id}/>
 
   <button type="submit" className="bg-blue-500 text-white p-2 rounded">Enviar</button>
 </form>
