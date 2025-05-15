@@ -15,8 +15,7 @@ export const AddNews = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-  
-    // Opcionalmente, puedes marcar los checkboxes como booleanos:
+
     formData.set("urgent", formData.get("urgent") ? 1 : 0);
     formData.set("premium", formData.get("premium") ? 1 : 0);
   
@@ -25,7 +24,6 @@ export const AddNews = () => {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
-          // No pongas Content-Type, fetch lo añade automáticamente al usar FormData
         },
         body: formData
       });
@@ -38,7 +36,6 @@ export const AddNews = () => {
   
       const result = await response.json();
       console.log('Noticia subida correctamente:', result);
-      // Puedes redirigir o mostrar un mensaje de éxito
     } catch (error) {
       console.error('Error en la subida:', error);
     }
@@ -62,7 +59,7 @@ export const AddNews = () => {
   <input type="date" name="date" required />
 
   <label>Image</label>
-  <input type="file" name="image" accept="image/*" required />
+  <input type="file" name="image" accept="image/*"/>
 
   <label>Type</label>
   <select name="type" required>
@@ -87,7 +84,7 @@ export const AddNews = () => {
     ))}
   </select>
 
-  <p>You are uploading this news as <strong>{currentUser?.name || currentUser}</strong></p>
+  <p>You are uploading this news as <strong>{currentUser?.name}</strong></p>
 
   <button type="submit" className="bg-blue-500 text-white p-2 rounded">Enviar</button>
 </form>
