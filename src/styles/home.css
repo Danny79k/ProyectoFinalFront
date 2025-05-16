@@ -45,7 +45,6 @@ Darkmode
     border-bottom: #ffffff solid 1px;
 }
 
-
 /* 
 
 
@@ -102,4 +101,62 @@ News
 /* Para que se vea limpio el texto */
 .news p {
     color: inherit;
+}
+
+.newsDetail>div:nth-child(1)>div.mt-4 {
+    scrollbar-width: none;
+}
+
+/*
+
+
+
+NewsDetail css
+
+
+
+*/
+
+[data-theme="dark"] .newsDetail {
+    background-color: #1b1b1b;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+[data-theme="dark"] .newsDetail h1 {
+    color: #f0f0f0;
+}
+
+[data-theme="dark"] .newsDetail p,
+[data-theme="dark"] .newsDetail div,
+[data-theme="dark"] .newsDetail span {
+    color: #ccc;
+}
+
+[data-theme="dark"] .newsDetail .badge-tipo {
+    background-color: #1e40af;
+    color: #bfdbfe;
+}
+
+[data-theme="dark"] .newsDetail .badge-categoria {
+    background-color: #166534;
+    color: #bbf7d0;
+}
+
+[data-theme="dark"] .newsDetail div.mt-4 {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .newsDetail button {
+    background-color: #40444e;
+    color: white;
+}
+
+[data-theme="dark"] .newsDetail button:hover {
+    background-color: #4d4659;
+}
+
+[data-theme="dark"] .redactor {
+    background-color: #5f0d72;
+    color: #b69ab3;
 }
