@@ -23,6 +23,7 @@ export function Home() {
   }, [data]); // Solo se ejecutará si `data` cambia
 
   //aqui habria que hacerlo bonito, te lo dejo a ti rafa
+    //listo manin un saludo
 
   if (loading)
     return (
