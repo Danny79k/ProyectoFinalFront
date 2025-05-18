@@ -3,10 +3,11 @@ import Seguidos from "./Seguidos";
 import { IoPersonSharp } from "react-icons/io5";
 import { BsClipboard2PlusFill } from "react-icons/bs";
 import { RiUserFollowFill } from "react-icons/ri";
-import { useUtilityMenu } from "../store/useStore";
+import { useUtilityMenu, useNewsStore} from "../store/useStore";
 
 function AsideL() {
   const { isDarkMode, toggleTheme } = useUtilityMenu();
+  const { setSearchTerm } = useNewsStore();
 
   return (
     <div className="asideL flex flex-col bg-gray-100 basis-[15%]">
@@ -20,6 +21,7 @@ function AsideL() {
             type="text"
             placeholder="Search..."
             className="block w-40 p-1 border rounded-md focus:outline-none placeholder:text-sm placeholder:text-gray-400"
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 

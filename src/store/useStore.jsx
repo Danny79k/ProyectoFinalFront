@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 const getInitialDarkMode = () => {
-  const stored = localStorage.getItem('isDarkMode');
+  const stored = localStorage.getItem("isDarkMode");
   return stored ? JSON.parse(stored) : false;
 };
 
@@ -12,14 +12,12 @@ export const useUtilityMenu = create((set) => ({
   toggleTheme: () =>
     set((state) => {
       const newMode = !state.isDarkMode;
-      localStorage.setItem('isDarkMode', JSON.stringify(newMode));
+      localStorage.setItem("isDarkMode", JSON.stringify(newMode));
       return { isDarkMode: newMode };
     }),
 
-  toggleMenu: () =>
-    set((state) => ({ menuOpen: !state.menuOpen })),
+  toggleMenu: () => set((state) => ({ menuOpen: !state.menuOpen })),
 }));
-
 
 export const useFormStore = create((set) => ({
   step: 1,
@@ -39,12 +37,9 @@ export const useFormStore = create((set) => ({
   setPasswordConfirmation: (passwordConfirmation) =>
     set({ passwordConfirmation }),
   setTermsAccepted: (termsAccepted) => set({ termsAccepted }),
-
-  
 }));
 
 export const useNewsStore = create((set) => ({
-  selectedNews: null,
-  setSelectedNews: (news) => set({ selectedNews: news }),
+  searchTerm: "",
+  setSearchTerm: (term) => set({ searchTerm: term }),
 }));
-

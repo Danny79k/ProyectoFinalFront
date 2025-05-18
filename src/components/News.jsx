@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import UseFetch from "./UseFetch";
+import { useNewsStore } from "../store/useStore";
 
 export function News({ noticias, filtro }) {
   const token = sessionStorage.getItem("token");
+  const { searchTerm } = useNewsStore();
 
   const { data, error, loading } = UseFetch(
     "https://jeffrey.informaticamajada.es/api/users",
@@ -32,6 +34,12 @@ export function News({ noticias, filtro }) {
     // Ordenamos desde la más reciente
     filteredNews = [...noticias].sort(
       (a, b) => new Date(b.created_at) - new Date(a.created_at)
+    );
+  }
+
+  if (searchTerm.trim() !== "") {
+    filteredNews = filteredNews.filter((item) =>
+      item.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
 
