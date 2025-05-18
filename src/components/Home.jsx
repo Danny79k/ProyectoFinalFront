@@ -4,12 +4,12 @@ import "../styles/home.css";
 import News from "./News";
 import { HiTemplate } from "react-icons/hi";
 import { ImCalendar } from "react-icons/im";
-import { SiExercism } from "react-icons/si";
+import { FaEarthAmericas } from "react-icons/fa6";
 import { HiArrowPathRoundedSquare } from "react-icons/hi2";
 import UseFetch from "./UseFetch";
 
 export function Home() {
-  const [activeOption, setActiveOption] = useState("Follow");
+  const [activeOption, setActiveOption] = useState("Regional");
   const token = sessionStorage.getItem("token");
   const { data, loading, error } = UseFetch(
     "https://jeffrey.informaticamajada.es/api/news",
@@ -23,7 +23,7 @@ export function Home() {
   }, [data]); // Solo se ejecutará si `data` cambia
 
   //aqui habria que hacerlo bonito, te lo dejo a ti rafa
-    //listo manin un saludo
+  //listo manin un saludo
 
   if (loading)
     return (
@@ -70,22 +70,22 @@ export function Home() {
       <div className="home-opcion flex flex-row w-full h-full px-2">
         <div
           className={`home-opcions flex flex-row justify-center items-center space-x-1 cursor-pointer ${
-            activeOption === "Follow" ? "opicions-active" : ""
+            activeOption === "International" ? "opicions-active" : ""
           }`}
-          onClick={() => handleOptionClick("Follow")}
+          onClick={() => handleOptionClick("International")}
         >
-          <SiExercism className="size-5" />
-          <p>Follow</p>
+          <FaEarthAmericas className="size-5" />
+          <p>International</p>
         </div>
 
         <div
           className={`home-opcions flex flex-row justify-center items-center ml-7 space-x-1 cursor-pointer ${
-            activeOption === "List" ? "opicions-active" : ""
+            activeOption === "Regional" ? "opicions-active" : ""
           }`}
-          onClick={() => handleOptionClick("List")}
+          onClick={() => handleOptionClick("Regional")}
         >
           <HiTemplate className="size-5" />
-          <p>List</p>
+          <p>Regional</p>
         </div>
 
         <div
@@ -111,7 +111,7 @@ export function Home() {
 
       {data && (
         <div className="home-content flex flex-row p-2 mt-4 h-[77vh] overflow-hidden overflow-y-auto">
-          <News noticias={data.data} />
+          <News noticias={data.data} filtro={activeOption} />
         </div>
       )}
     </div>
