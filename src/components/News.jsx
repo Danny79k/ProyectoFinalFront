@@ -3,6 +3,7 @@ import UseFetch from "../hooks/UseFetch";
 import { useNewsStore } from "../store/useStore";
 import Loading from "../utils/Loading";
 import Error from "../utils/Error";
+import { use } from "react";
 
 export function News({ noticias, filtro }) {
   const token = sessionStorage.getItem("token");

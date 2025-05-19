@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, redirect } from "react-router-dom";
 import UseFetch from "../hooks/UseFetch";
 
 export function NewsDetail() {
@@ -29,7 +29,7 @@ export function NewsDetail() {
     const formData = new FormData(e.target);
     try {
       const response = await fetch(
-        "https://jeffrey.informaticamajada.es/api/news",
+        `https://jeffrey.informaticamajada.es/api/news/${formData.get("id_news")}`,
         {
           method: "DELETE",
           headers: {
@@ -47,6 +47,8 @@ export function NewsDetail() {
 
       const result = await response.json();
       console.log("Noticia eliminada correctamente:", result);
+      navigate("/home");
+      window.location.reload();
     } catch (error) {
       console.error("Error en la eliminacion:", error);
     }
@@ -171,11 +173,11 @@ export function NewsDetail() {
             </button>
             <div className="p-1 bg-red-600 text-center">
               <form method="post" onSubmit={handleDeleteImage}>
-                <input type="text" className="hidden" value={item.id} />
+                <input type="text" name="id_news" className="hidden" value={item.id} />
+                <button className="text-white font-bold" type="submit">
+                  Borrar
+                </button>
               </form>
-              <button className="text-white font-bold" type="submit">
-                Borrar
-              </button>
             </div>
           </div>
         </div>
