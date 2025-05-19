@@ -1,30 +1,18 @@
 import UseFetch from "../hooks/UseFetch";
+import { useState } from "react";
 
 export const AddNews = () => {
   const token = sessionStorage.getItem("token");
   const currentUser = sessionStorage.getItem("user");
   const currentUserParsed = JSON.parse(currentUser);
 
-  console.log(currentUserParsed.name);
-
   const { data, error, loading } = UseFetch(
     "https://jeffrey.informaticamajada.es/api/categories",
     token
   );
 
-  if (loading)
-    return (
-      <div className="flex justify-center items-center h-full">Cargando...</div>
-    );
-  if (error)
-    return (
-      <div className="flex justify-center items-center h-full">
-        Error: {error}
-      </div>
-    );
-
-  const categories = data.data;
-  console.log(categories);
+  const [preview, setPreview] = useState(null);
+  const [formData, setFormData] = useState({});
 
   // const handleImageChange = (e) => {
   //   const file = e.target.files[0];
@@ -70,6 +58,21 @@ export const AddNews = () => {
       console.error("Error en la subida:", error);
     }
   };
+
+  if (loading)
+    return (
+      <div className="flex justify-center items-center h-full text-gray-500">
+        Cargando...
+      </div>
+    );
+  if (error)
+    return (
+      <div className="flex justify-center items-center h-full text-red-500">
+        Error: {error}
+      </div>
+    );
+
+  const categories = data.data;
 
   return (
     <div className="home-content h-[85vh] overflow-y-auto overflow-hidden">
