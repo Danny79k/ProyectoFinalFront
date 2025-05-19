@@ -12,13 +12,15 @@ export const AddNews = () => {
   );
 
   const [preview, setPreview] = useState(null);
-  const [img, setImg] = useState(null);
+  const [img, setImg] = useState([]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setPreview(URL.createObjectURL(file));
       setImg(file);
+      console.log(file)
+
     }
   };
 
@@ -41,6 +43,10 @@ export const AddNews = () => {
     }
 
     try {
+      for (let pair of formData.entries()) {
+        console.log(pair[0], pair[1]);
+      }
+      
       const response = await fetch(
         "https://jeffrey.informaticamajada.es/api/news",
         {
@@ -53,13 +59,12 @@ export const AddNews = () => {
       );
 
       if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Error al enviar:", errorData);
+        //const errorData = await response.json();
+        //console.error("Error al enviar:", errorData);
         return;
       }
-
-      const result = await response.json();
-      console.log("Noticia subida correctamente:", result);
+      //const result = await response.json();
+      //console.log("Noticia subida correctamente:", result);
     } catch (error) {
       console.error("Error en la subida:", error);
     }
