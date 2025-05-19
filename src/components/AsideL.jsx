@@ -3,7 +3,8 @@ import Seguidos from "./Seguidos";
 import { IoPersonSharp } from "react-icons/io5";
 import { BsClipboard2PlusFill } from "react-icons/bs";
 import { RiUserFollowFill } from "react-icons/ri";
-import { useUtilityMenu, useNewsStore} from "../store/useStore";
+import { useUtilityMenu, useNewsStore } from "../store/useStore";
+import { CgLogOut } from "react-icons/cg";
 
 function AsideL() {
   const { isDarkMode, toggleTheme } = useUtilityMenu();
@@ -61,6 +62,16 @@ function AsideL() {
             </NavLink>
           </div>
         </div>
+      </div>
+
+      <div className="dark-mode-asideL mt-auto p-3 mb-0">
+        <button
+          className="flex items-center w-full px-4 py-3 text-gray-800 hover:bg-gray-200 transition-colors"
+        >
+          <CgLogOut className="text-gray-200" />
+
+          <span className="ml-3 text-sm">Logout</span>
+        </button>
       </div>
 
       <div className="dark-mode-asideL mt-auto p-3 mb-2">
