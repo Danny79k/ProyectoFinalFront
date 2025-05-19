@@ -132,16 +132,13 @@ export function NewsDetail() {
   return (
     <div className="home-content mt-10 h-[85vh] overflow-hidden overflow-y-auto">
       <div className="newsDetail rounded-xl overflow-hidden flex flex-col md:flex-row shadow bg-white text-gray-900">
-        {/* Lado izquierdo: texto */}
         <div className="md:w-1/2 w-full p-6 space-y-4 flex flex-col">
-          {/* Encabezado */}
           <div>
             <h1 className="text-3xl font-bold">{item.title}</h1>
             <p className="text-sm text-gray-600 mt-1">
               Publicado el {new Date(item.created_at).toLocaleDateString()}
             </p>
 
-            {/* Etiquetas */}
             <div className="flex flex-wrap gap-2 mt-2 text-sm">
               <span className="badge-tipo px-3 py-1 rounded-full bg-blue-200 text-blue-900">
                 {item.type}
@@ -165,7 +162,7 @@ export function NewsDetail() {
             </span>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-between items-center mt-4">
             <button
               onClick={() => navigate("/home")}
               className="mt-6 mb-6 w-24 px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow"
@@ -183,7 +180,6 @@ export function NewsDetail() {
           </div>
         </div>
 
-        {/* Imagen a la derecha */}
         <div className="md:w-1/2 w-full flex justify-center items-center p-4">
           <img
             src={item.main_image}
