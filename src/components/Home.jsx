@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { NavLink } from "react-router-dom";
 import "../styles/home.css";
 import News from "./News";
 import { HiTemplate } from "react-icons/hi";
@@ -13,7 +11,6 @@ import Error from "../utils/Error";
 import Editors from "./Editors";
 
 export function Home() {
-  const location = useLocation();
   const [activeOption, setActiveOption] = useState("Regional");
   const token = sessionStorage.getItem("token");
   const { data, loading, error } = UseFetch(
