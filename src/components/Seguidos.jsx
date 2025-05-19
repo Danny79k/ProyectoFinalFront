@@ -34,7 +34,7 @@ function Seguidos() {
             >
               <div className="w-6 h-6 rounded-full overflow-hidden border border-gray-300">
                 <img
-                  src={f.avatar}
+                  src={f.img}
                   alt={f.name}
                   className="w-full h-full object-cover"
                 />
