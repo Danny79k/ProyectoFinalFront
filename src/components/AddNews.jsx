@@ -34,12 +34,10 @@ export const AddNews = () => {
     formData.append("user_id", e.target.user_id.value);
     formData.append("urgent", e.target.urgent.checked ? 1 : 0);
     formData.append("premium", e.target.premium.checked ? 1 : 0);
-
-    if (img) {
-      formData.append("main_image", img);
-    } else {
-      console.error("Imagen no seleccionada");
-      return;
+    formData.append("main_image", e.target.main_image.files[0]);
+  
+    for (let pair of formData.entries()) {
+      console.log(pair[0], pair[1]);
     }
 
     try {
