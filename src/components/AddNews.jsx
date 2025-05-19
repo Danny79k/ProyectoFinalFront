@@ -40,7 +40,7 @@ export const AddNews = () => {
 
     formData.set("urgent", formData.get("urgent") ? 1 : 0);
     formData.set("premium", formData.get("premium") ? 1 : 0);
-    const file = e.target.files[0];
+    const file = e.target?.files[0] || [];
     if (file) {
       setPreview(URL.createObjectURL(file));
       formData.set("main_image", formData.get("main_image") ? file : 0);
