@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import "../styles/home.css";
 import News from "./News";
@@ -9,8 +10,10 @@ import { HiArrowPathRoundedSquare } from "react-icons/hi2";
 import UseFetch from "../hooks/UseFetch";
 import Loading from "../utils/Loading";
 import Error from "../utils/Error";
+import Editors from "./Editors";
 
 export function Home() {
+  const location = useLocation();
   const [activeOption, setActiveOption] = useState("Regional");
   const token = sessionStorage.getItem("token");
   const { data, loading, error } = UseFetch(
@@ -23,6 +26,14 @@ export function Home() {
       console.log("Noticias recibidas:", data);
     }
   }, [data]); // Solo se ejecutará si `data` cambia
+
+  const {
+    data: users,
+    loading: usersLoading,
+    error: usersError,
+  } = UseFetch("https://jeffrey.informaticamajada.es/api/users", token);
+
+  const editors = users?.data?.filter((user) => user.type === "writer");
 
   //aqui habria que hacerlo bonito, te lo dejo a ti rafa
   //listo manin un saludo
@@ -73,22 +84,22 @@ export function Home() {
           <p>Breaking news</p>
         </div>
 
-        <div className="cambio h-8 flex flex-row justify-center items-center px-4 ml-auto cursor-pointer hover:bg-gray-200 rounded-xl">
-          <NavLink
-            className={"flex flex-row justify-center items-center space-x-1"}
-            to="/home/blog"
-          >
-            <HiArrowPathRoundedSquare className="size-5" />
-            <p>Blog</p>
-          </NavLink>
+        <div
+          className="cambio h-8 flex flex-row justify-center items-center px-4 ml-auto cursor-pointer hover:bg-gray-200 rounded-xl"
+          onClick={() => handleOptionClick("Editors")}
+        >
+          <HiArrowPathRoundedSquare className="size-5 mr-1" />
+          <p>writers</p>
         </div>
       </div>
 
-      {data && (
-        <div className="home-content flex flex-row p-2 mt-4 h-[77vh] overflow-hidden overflow-y-auto">
+      <div className="home-content flex flex-row p-2 mt-4 h-[77vh] overflow-hidden overflow-y-auto">
+        {activeOption === "Editors" ? (
+          <Editors Editors={editors} />
+        ) : (
           <News noticias={data.data} filtro={activeOption} />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

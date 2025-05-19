@@ -68,40 +68,76 @@ export function News({ noticias, filtro }) {
     );
   }
 
+  const handleDeleteImage = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    try {
+      const response = await fetch('https://jeffrey.informaticamajada.es/api/news', {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Error al eliminar:', errorData);
+        return;
+      }
+
+      const result = await response.json();
+      console.log('Noticia eliminada correctamente:', result);
+    } catch (error) {
+      console.error('Error en la eliminacion:', error);
+    }
+  }
+
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 w-full">
-      {filteredNews.map((item) => (
-        <NavLink to={`/home/newsDetail/${item.id}`} key={item.id}>
-          <div className="news rounded-xl shadow flex flex-col cursor-pointer">
-            <img
-              src={item.main_image}
-              alt="Noticia"
-              className="w-full h-40 object-cover"
-            />
-
-            <div className="p-4 flex flex-col gap-2 flex-1">
-              <p className="text-sm font-medium truncate">{item.title}</p>
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="badge-tipo text-xs px-2 py-1 rounded-full">
-                  {item.type}
-                </span>
-                <span className="badge-categoria text-xs px-2 py-1 rounded-full">
-                  {
-                    categories.find(
-                      (category) => category.id == item.category_id
-                    )?.type
-                  }
-                </span>
-                <p className="text-xs truncate">
-                  {users.find((user) => user.id == item.user_id)?.name}
-                </p>
-              </div>
+      {filteredNews.map((item) => {
+        const category = categories.find(
+          (category) => category.id == item.category_id
+        )?.type;
+        const user = users.find((user) => user.id == item.user_id)?.name;
+  
+        return (
+          <div
+            key={item.id}
+            className="news rounded-xl shadow flex flex-col overflow-hidden"
+          >
+            {/* Botón de borrar */}
+            <div className="p-1 bg-red-600 text-center">
+              <form method="post" onSubmit={handleDeleteImage}><input type="text" className="hidden" value={item.id} /></form>
+              <button className="text-white font-bold" type="submit">Borrar</button>
             </div>
+  
+            {/* Contenido clicable */}
+            <NavLink to={`/home/newsDetail/${item.id}`} className="flex flex-col flex-1">
+              <img
+                src={item.main_image}
+                alt="Noticia"
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-4 flex flex-col gap-2 flex-1">
+                <p className="text-sm font-medium truncate">{item.title}</p>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="badge-tipo text-xs px-2 py-1 rounded-full">
+                    {item.type}
+                  </span>
+                  <span className="badge-categoria text-xs px-2 py-1 rounded-full">
+                    {category}
+                  </span>
+                  <p className="text-xs truncate">{user}</p>
+                </div>
+              </div>
+            </NavLink>
           </div>
-        </NavLink>
-      ))}
+        );
+      })}
     </div>
   );
+  
 }
 
 export default News;
