@@ -24,11 +24,23 @@ export const AddNews = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const formData = new FormData();
 
-    formData.set("urgent", formData.get("urgent") ? 1 : 0);
-    formData.set("premium", formData.get("premium") ? 1 : 0);
-    formData.set("main_image", formData.get("main_image") ? img : 0);
+    formData.append("title", e.target.title.value);
+    formData.append("content", e.target.content.value);
+    formData.append("date", e.target.date.value);
+    formData.append("type", e.target.type.value);
+    formData.append("category_id", e.target.category_id.value);
+    formData.append("user_id", e.target.user_id.value);
+    formData.append("urgent", e.target.urgent.checked ? 1 : 0);
+    formData.append("premium", e.target.premium.checked ? 1 : 0);
+
+    if (img) {
+      formData.append("main_image", img);
+    } else {
+      console.error("Imagen no seleccionada");
+      return;
+    }
 
     try {
       const response = await fetch(
