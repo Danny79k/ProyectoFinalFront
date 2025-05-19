@@ -45,7 +45,7 @@ function App() {
               <Route path="newsDetail/:id" element={<NewsDetail />} />
               <Route path="blog" element={<h1>Blog page</h1>} />
               <Route path="editors" element={<Editors />} />
-              <Route path="add_news" element={<AddNews/>}/>
+              <Route path="add_news" element={<AddNews />} />
             </Route>
           </Route>
 

@@ -32,7 +32,7 @@ function AsideL() {
               <p className="text-sm ml-2">My Posts</p>
             </div>
           </NavLink>
-          <NavLink className="w-full" to="/home">
+          <NavLink className="w-full" to="/home/add_news">
             <div className="admin-options w-full flex flex-row items-center p-2 hover:bg-gray-200">
               <BsClipboard2PlusFill className="text-green-900" />
               <p className="text-sm ml-2">New Posts</p>
