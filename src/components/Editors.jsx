@@ -1,6 +1,14 @@
+import Loading from "../utils/Loading";
 
 export function Editors({ Editors }) {
 
+  const token = sessionStorage.getItem("token");
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
+  const { data, error, loading } = useFetch("https://jeffrey.informaticamajada.es/api/follows", token);
+
+  if (loading) return <Loading tipo="Seguidos" />;
+  if (error) return <Error error={error} />;
   
 
   return (
