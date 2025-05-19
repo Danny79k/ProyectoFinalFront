@@ -1,5 +1,4 @@
-import React, { use } from 'react'
-import UseFetch from './UseFetch';
+import UseFetch from '../hooks/UseFetch';
 
 export const AddNews = () => {
   const token = sessionStorage.getItem("token")
