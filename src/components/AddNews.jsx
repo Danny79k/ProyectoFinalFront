@@ -54,7 +54,7 @@ export const AddNews = () => {
   }
 
   return (
-    <div>
+    <div className='home-content h-[85vh] overflow-y-auto overflow-hidden'>
 
 
       <form
