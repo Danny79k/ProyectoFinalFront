@@ -12,15 +12,13 @@ export const AddNews = () => {
   );
 
   const [preview, setPreview] = useState(null);
-  const [formData, setFormData] = useState({});
 
-  // const handleImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     setPreview(URL.createObjectURL(file));
-  //     setFormData({ ...formData, main_image: file });
-  //   }
-  // };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPreview(URL.createObjectURL(file));
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,11 +26,6 @@ export const AddNews = () => {
 
     formData.set("urgent", formData.get("urgent") ? 1 : 0);
     formData.set("premium", formData.get("premium") ? 1 : 0);
-    const file = e.target.files[0];
-    if (file) {
-      setPreview(URL.createObjectURL(file));
-      formData.set("main_image", formData.get("main_image") ? file : 0);
-    }
 
     try {
       const response = await fetch(
@@ -65,6 +58,7 @@ export const AddNews = () => {
         Cargando...
       </div>
     );
+
   if (error)
     return (
       <div className="flex justify-center items-center h-full text-red-500">
@@ -75,64 +69,114 @@ export const AddNews = () => {
   const categories = data.data;
 
   return (
-    <div className="home-content h-[85vh] overflow-y-auto overflow-hidden">
+    <div className="home-content h-[85vh] overflow-y-auto p-6">
       <form
         onSubmit={handleSubmit}
         encType="multipart/form-data"
-        className="flex flex-col gap-4 p-4"
+        className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl p-6 flex flex-col gap-5"
       >
-        <label>Title</label>
-        <input type="text" name="title" required />
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Añadir Noticia</h2>
 
-        <label>Content</label>
-        <textarea name="content" required />
+        <div className="flex flex-col">
+          <label className="font-semibold text-gray-700">Título</label>
+          <input
+            type="text"
+            name="title"
+            required
+            className="border rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
 
-        <label>Date</label>
-        <input type="datetime-local" name="date" required />
+        <div className="flex flex-col">
+          <label className="font-semibold text-gray-700">Contenido</label>
+          <textarea
+            name="content"
+            required
+            className="border rounded-lg px-3 py-2 mt-1 h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
+          ></textarea>
+        </div>
 
-        <label>Image</label>
-        <input
-          type="file"
-          name="main_image"
-          accept="image/*"
-        />
+        <div className="flex flex-col">
+          <label className="font-semibold text-gray-700">Fecha</label>
+          <input
+            type="datetime-local"
+            name="date"
+            required
+            className="border rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
 
-        <label>Type</label>
-        <select name="type" required>
-          <option value="local">Local</option>
-          <option value="regional">Regional</option>
-          <option value="national">Nacional</option>
-          <option value="international">Internacional</option>
-        </select>
+        <div className="flex flex-col">
+          <label className="font-semibold text-gray-700">Imagen</label>
+          <input
+            type="file"
+            name="main_image"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="mt-1"
+          />
+          {preview && (
+            <img
+              src={preview}
+              alt="Vista previa"
+              className="mt-2 w-48 h-32 object-cover rounded-lg shadow"
+            />
+          )}
+        </div>
 
-        <label>Urgent</label>
-        <input type="checkbox" name="urgent" value="1" />
+        <div className="flex flex-col">
+          <label className="font-semibold text-gray-700">Tipo</label>
+          <select
+            name="type"
+            required
+            className="border rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
+            <option value="local">Local</option>
+            <option value="regional">Regional</option>
+            <option value="national">Nacional</option>
+            <option value="international">Internacional</option>
+          </select>
+        </div>
 
-        <label>Premium</label>
-        <input type="checkbox" name="premium" value="1" />
+        <div className="flex items-center gap-4">
+          <label className="flex items-center gap-2 text-gray-700">
+            <input type="checkbox" name="urgent" value="1" className="accent-blue-500" />
+            Urgente
+          </label>
 
-        <label>Category</label>
-        <select name="category_id" required>
-          {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.type}
-            </option>
-          ))}
-        </select>
+          <label className="flex items-center gap-2 text-gray-700">
+            <input type="checkbox" name="premium" value="1" className="accent-blue-500" />
+            Premium
+          </label>
+        </div>
 
-        <p>
-          You are uploading this news as{" "}
-          <strong>{currentUserParsed.name}</strong>
+        <div className="flex flex-col">
+          <label className="font-semibold text-gray-700">Categoría</label>
+          <select
+            name="category_id"
+            required
+            className="border rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.type}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <p className="text-gray-600 text-sm">
+          Estás publicando esta noticia como{" "}
+          <strong className="text-gray-800">{currentUserParsed.name}</strong>
         </p>
-        <input
-          type="text"
-          name="user_id"
-          className="hidden"
-          value={currentUserParsed.id}
-        />
 
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
-          Enviar
+        <input type="text" name="user_id" className="hidden" value={currentUserParsed.id} />
+
+        <button
+          type="submit"
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-200"
+        >
+          Publicar Noticia
         </button>
       </form>
     </div>
