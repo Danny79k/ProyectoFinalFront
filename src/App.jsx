@@ -16,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AddNews } from "./components/AddNews";
 import Editors from "./components/Editors";
+import Myposts from "./components/Myposts";
 
 function App() {
   const { isDarkMode } = useUtilityMenu();
@@ -45,6 +46,7 @@ function App() {
               <Route path="newsDetail/:id" element={<NewsDetail />} />
               <Route path="blog" element={<h1>Blog page</h1>} />
               <Route path="editors" element={<Editors />} />
+              <Route path="my_posts" element={<Myposts />} />
               <Route path="add_news" element={<AddNews />} />
             </Route>
           </Route>

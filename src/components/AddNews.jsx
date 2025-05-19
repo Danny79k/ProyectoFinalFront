@@ -30,7 +30,6 @@ export const AddNews = () => {
     formData.set("premium", formData.get("premium") ? 1 : 0);
     formData.set("main_image", formData.get("main_image") ? img : 0);
 
-
     try {
       const response = await fetch(
         "https://jeffrey.informaticamajada.es/api/news",

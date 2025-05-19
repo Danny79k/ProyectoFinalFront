@@ -1,19 +1,21 @@
 import Loading from "../utils/Loading";
+import Error from "../utils/Error";
+import useFetch from "../hooks/UseFetch";
 
 export function Editors({ Editors }) {
 
   const token = sessionStorage.getItem("token");
   const user = JSON.parse(sessionStorage.getItem("user"));
 
-  const { data, error, loading } = useFetch("https://jeffrey.informaticamajada.es/api/follows", token);
+  const { data, error, loading } = useFetch(`https://jeffrey.informaticamajada.es/api/users/${user.id}/following`, token);
 
-  if (loading) return <Loading tipo="Seguidos" />;
-  if (error) return <Error error={error} />;
+  if (loading) return <Loading tipo="Seguidos"/>;
+  if (error) return <Error error={error}/>;
   
 
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 w-full">
-      {Editors.map((item) => (
+      {data && Editors.map((item) => (
         <div
           key={item.id}
           className="news rounded-xl shadow flex flex-col cursor-pointer"
