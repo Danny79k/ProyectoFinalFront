@@ -27,7 +27,7 @@ function AsideL() {
         </div>
 
         <div className="ml-2 w-40 flex flex-col items-start justify-start mb-4 space-y-1">
-          <NavLink className="w-full" to="/home">
+          <NavLink className="w-full" to="/home/my_posts">
             <div className="admin-options flex flex-row items-center p-2 hover:bg-gray-200">
               <IoPersonSharp className="text-cyan-900" />
               <p className="text-sm ml-2">My Posts</p>
