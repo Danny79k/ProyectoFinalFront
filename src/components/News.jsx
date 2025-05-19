@@ -68,31 +68,6 @@ export function News({ noticias, filtro }) {
     );
   }
 
-  const handleDeleteImage = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    try {
-      const response = await fetch('https://jeffrey.informaticamajada.es/api/news', {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Error al eliminar:', errorData);
-        return;
-      }
-
-      const result = await response.json();
-      console.log('Noticia eliminada correctamente:', result);
-    } catch (error) {
-      console.error('Error en la eliminacion:', error);
-    }
-  }
-
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 w-full">
       {filteredNews.map((item) => (
