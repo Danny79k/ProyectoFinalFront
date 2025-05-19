@@ -12,11 +12,13 @@ export const AddNews = () => {
   );
 
   const [preview, setPreview] = useState(null);
+  const [img, setImg] = useState(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setPreview(URL.createObjectURL(file));
+      setImg(file);
     }
   };
 
@@ -26,12 +28,8 @@ export const AddNews = () => {
 
     formData.set("urgent", formData.get("urgent") ? 1 : 0);
     formData.set("premium", formData.get("premium") ? 1 : 0);
+    formData.set("main_image", formData.get("main_image") ? img : 0);
 
-    const file = e.target?.files[0] || [];
-    if (file) {
-      setPreview(URL.createObjectURL(file));
-      formData.set("main_image", formData.get("main_image") ? file : 0);
-    }
 
     try {
       const response = await fetch(
