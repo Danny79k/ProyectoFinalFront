@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import Loading from "../utils/Loading";
+import Error from "../utils/Error";
 
 function Seguidos() {
   const usuarios = [
@@ -9,30 +11,41 @@ function Seguidos() {
     { id: 5, nombre: "Laura", avatar: "https://i.pravatar.cc/30?img=5" },
     { id: 6, nombre: "Mario", avatar: "https://i.pravatar.cc/30?img=6" },
   ];
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  const token = sessionStorage.getItem("token");
 
-  return (
-    <div className="seguidos w-[80%] ml-3 pl-3 border-l border-gray-300">
-      <div className="flex flex-col space-y-2 max-h-28 overflow-y-auto custom-scroll mt-2">
-        {usuarios.map((user) => (
-          <NavLink to="home" key={user.id}>
-            <div
-              key={user.id}
-              className="usuario-seguido flex items-center space-x-2 cursor-pointer p-1 rounded-2xl hover:bg-gray-200"
-            >
-              <div className="w-6 h-6 rounded-full overflow-hidden border border-gray-300">
-                <img
-                  src={user.avatar}
-                  alt={user.nombre}
-                  className="w-full h-full object-cover"
-                />
+  const { data, loading, error } = useFetch(`https://jeffrey.informaticamajada.es/api/users/${user.id}/following`, token);
+
+  const followers = data.data;
+  console.log(followers);
+
+  if (loading) return <Loading />
+  if (error) return <Error />
+  if (data) {
+    return (
+      <div className="seguidos w-[80%] ml-3 pl-3 border-l border-gray-300">
+        <div className="flex flex-col space-y-2 max-h-28 overflow-y-auto custom-scroll mt-2">
+          {followers.map((f) => (
+            <NavLink to="home" key={f.id}>
+              <div
+                key={f.id}
+                className="usuario-seguido flex items-center space-x-2 cursor-pointer p-1 rounded-2xl hover:bg-gray-200"
+              >
+                <div className="w-6 h-6 rounded-full overflow-hidden border border-gray-300">
+                  <img
+                    src={user.avatar}
+                    alt={user.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <p className="text-sm">{user.name}</p>
               </div>
-              <p className="text-sm">{user.nombre}</p>
-            </div>
-          </NavLink>
-        ))}
+            </NavLink>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Seguidos;
