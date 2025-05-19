@@ -12,6 +12,7 @@ function Seguidos() {
     { id: 5, nombre: "Laura", avatar: "https://i.pravatar.cc/30?img=5" },
     { id: 6, nombre: "Mario", avatar: "https://i.pravatar.cc/30?img=6" },
   ];
+  
   const user = JSON.parse(sessionStorage.getItem("user"));
   const token = sessionStorage.getItem("token");
 
