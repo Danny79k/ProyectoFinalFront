@@ -26,13 +26,13 @@ export const AddNews = () => {
   const categories = data.data;
   console.log(categories);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setPreview(URL.createObjectURL(file));
-      setFormData({ ...formData, main_image: file });
-    }
-  };
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     setPreview(URL.createObjectURL(file));
+  //     setFormData({ ...formData, main_image: file });
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +40,11 @@ export const AddNews = () => {
 
     formData.set("urgent", formData.get("urgent") ? 1 : 0);
     formData.set("premium", formData.get("premium") ? 1 : 0);
+    const file = e.target.files[0];
+    if (file) {
+      setPreview(URL.createObjectURL(file));
+      formData.set("main_image", formData.get("main_image") ? file : 0);
+    }
 
     try {
       const response = await fetch(
@@ -87,7 +92,6 @@ export const AddNews = () => {
           type="file"
           name="main_image"
           accept="image/*"
-          onChange={handleImageChange}
         />
 
         <label>Type</label>
