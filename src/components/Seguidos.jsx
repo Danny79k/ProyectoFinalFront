@@ -4,14 +4,6 @@ import Error from "../utils/Error";
 import useFetch from "../hooks/UseFetch";
 
 function Seguidos() {
-  const usuarios = [
-    { id: 1, nombre: "Luis", avatar: "https://i.pravatar.cc/30?img=1" },
-    { id: 2, nombre: "Ana", avatar: "https://i.pravatar.cc/30?img=2" },
-    { id: 3, nombre: "Carlos", avatar: "https://i.pravatar.cc/30?img=3" },
-    { id: 4, nombre: "Eva", avatar: "https://i.pravatar.cc/30?img=4" },
-    { id: 5, nombre: "Laura", avatar: "https://i.pravatar.cc/30?img=5" },
-    { id: 6, nombre: "Mario", avatar: "https://i.pravatar.cc/30?img=6" },
-  ];
   
   const user = JSON.parse(sessionStorage.getItem("user"));
   const token = sessionStorage.getItem("token");
