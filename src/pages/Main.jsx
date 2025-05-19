@@ -10,6 +10,7 @@ function Main() {
     if (location.pathname === "/home/settings") return "Settings";
     if (location.pathname.startsWith("/home/blog")) return "Blog";
     if (location.pathname.startsWith("/home/newsDetail")) return "News Detail";
+    if (location.pathname.startsWith("/home/add_news")) return "Add News";
     return "Error";
   };
 
