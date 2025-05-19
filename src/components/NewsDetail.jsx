@@ -24,6 +24,34 @@ export function NewsDetail() {
     loading: categoriesLoading,
   } = UseFetch("https://jeffrey.informaticamajada.es/api/categories", token);
 
+  const handleDeleteImage = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    try {
+      const response = await fetch(
+        "https://jeffrey.informaticamajada.es/api/news",
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error al eliminar:", errorData);
+        return;
+      }
+
+      const result = await response.json();
+      console.log("Noticia eliminada correctamente:", result);
+    } catch (error) {
+      console.error("Error en la eliminacion:", error);
+    }
+  };
+
   if (loading || usersLoading || categoriesLoading) {
     return (
       <div className="flex flex-col justify-center items-center w-full h-[80vh] gap-4">
@@ -144,6 +172,14 @@ export function NewsDetail() {
             >
               Volver
             </button>
+            <div className="p-1 bg-red-600 text-center">
+              <form method="post" onSubmit={handleDeleteImage}>
+                <input type="text" className="hidden" value={item.id} />
+              </form>
+              <button className="text-white font-bold" type="submit">
+                Borrar
+              </button>
+            </div>
           </div>
         </div>
 
