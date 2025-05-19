@@ -9,7 +9,7 @@ export function Editors({ Editors }) {
           className="news rounded-xl shadow flex flex-col cursor-pointer"
         >
           <img
-            src={item.main_image}
+            src={item.img}
             alt="img"
             className="w-full h-40 object-cover"
           />
