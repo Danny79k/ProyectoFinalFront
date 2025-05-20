@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useUtilityMenu } from "../store/useStore";
 import { useState } from "react";
 import "../styles/signIn.css";
@@ -10,6 +10,8 @@ function SignIn() {
   // ===================================================================
   const [email, setEmail] = useState("usuario@ejemplo.com");
   const [password, setPassword] = useState("password");
+
+  const navigate = useNavigate();
 
   const { isDarkMode } = useUtilityMenu();
   // ===================================================================
@@ -39,6 +41,7 @@ function SignIn() {
 
       console.log(data);
       console.log(email, password);
+      navigate('/home'); 
     } catch (error) {
       console.error(error);
     }
