@@ -1,4 +1,6 @@
 import UseFetch from "../hooks/UseFetch";
+import News from "./News";
+
 
 export function Myposts() {
 
