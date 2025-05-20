@@ -164,14 +164,14 @@ export function NewsDetail() {
             </span>
           </div>
 
-          <div className="flex justify-between items-center mt-4">
+          <div className="flex items-center mt-4">
             <button
               onClick={() => navigate("/home")}
               className="mt-6 mb-6 w-24 px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow"
             >
               Volver
             </button>
-            <div className="p-1 bg-red-600 text-center">
+            <div className="mt-6 mb-6 mx-5 w-24 px-6 py-2 rounded-lg bg-red-600 text-center">
               <form method="post" onSubmit={handleDeleteImage}>
                 <input type="text" name="id_news" className="hidden" value={item.id} />
                 <button className="text-white font-bold" type="submit">
