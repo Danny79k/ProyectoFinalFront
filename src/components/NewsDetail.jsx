@@ -1,5 +1,6 @@
 import { useParams, useNavigate, redirect } from "react-router-dom";
 import UseFetch from "../hooks/UseFetch";
+import NewsComment from "./NewsComment";
 
 export function NewsDetail() {
   const { id } = useParams();
@@ -198,6 +199,7 @@ export function NewsDetail() {
           />
         </div>
       </div>
+      <NewsComment userData={usersData} news={id}></NewsComment>
     </div>
   );
 }
