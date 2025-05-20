@@ -190,7 +190,9 @@ export function NewsDetail() {
 
         <div className="md:w-1/2 w-full flex justify-center items-center p-4">
           <img
-            src={item.main_image}
+            src={
+              item.main_image.slice(-3) !== "300" ? "https://jeffrey.informaticamajada.es/storage/" + item.main_image : item.main_image
+            }
             alt={item.title}
             className="max-w-[550px] w-full h-full object-contain rounded-lg"
           />
