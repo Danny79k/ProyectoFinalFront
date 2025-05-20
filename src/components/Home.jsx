@@ -13,6 +13,9 @@ import Editors from "./Editors";
 export function Home() {
   const [activeOption, setActiveOption] = useState("Regional");
   const token = sessionStorage.getItem("token");
+  if (!token) {
+    window.location.href = "/signin";
+  }
   const { data, loading, error } = UseFetch(
     "https://jeffrey.informaticamajada.es/api/news",
     token
