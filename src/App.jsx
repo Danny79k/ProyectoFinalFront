@@ -3,10 +3,10 @@ import Layout from "./layouts/Layout";
 import About from "./pages/About";
 import SignIn from "./pages/SignIn";
 import GetStarted from "./pages/GetStarted";
-import Contact from "./pages/Contact";
 import PrivateLayout from "./layouts/PrivateLayout";
 import Main from "./pages/Main";
 import NotFound from "./pages/NotFound";
+import Rules from "./pages/Rules";
 import Home from "./components/Home";
 import Settings from "./components/Settings";
 import NewsDetail from "./components/NewsDetail";
@@ -36,7 +36,7 @@ function App() {
             <Route path="/" element={<About />} />
             <Route path="/signIn" element={<SignIn />} />
             <Route path="/getStarted" element={<GetStarted />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/rules" element={<Rules />} />
           </Route>
 
           <Route element={<PrivateLayout />}>

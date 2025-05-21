@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import "../styles/about.css";
 import img from "../assets/view.png";
-
+import jeffrey from "../assets/Jeffrey.png";
+import SrStroncio from "../assets/Sr.stroncio.png";
 const About = () => {
   return (
     <>
@@ -33,11 +34,11 @@ const About = () => {
           />
         </div>
 
-        <div className="about-section w-full bg-white text-start py-8">
+        <div className="about-section w-full bg-white text-center py-8">
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-5">
             Stay Updated
           </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-xl">
+          <p className="text-base mx-auto md:text-lg text-gray-600 max-w-xl">
             Fresh news every day, reliable information, and an easy-to-use
             platform.
           </p>
@@ -50,13 +51,13 @@ const About = () => {
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 px-6 max-w-5xl mx-auto">
             <a
-              href="https://github.com/JeffreyGitHub"
+              href="https://github.com/JeffreyArrosio"
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-white border border-gray-300 p-6 w-64 text-center rounded-xl transition duration-300 card-jeffrey"
             >
               <img
-                src="https://via.placeholder.com/150"
+                src={jeffrey}
                 alt="Jeffrey"
                 className="w-28 h-28 mx-auto rounded-full border-2 border-gray-300 mb-4"
               />
@@ -64,7 +65,7 @@ const About = () => {
             </a>
 
             <a
-              href="https://github.com/DannyGitHub"
+              href="https://github.com/Danny79k"
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-white border border-gray-300 p-6 w-64 text-center rounded-xl transition duration-300 card-danny"
@@ -78,13 +79,13 @@ const About = () => {
             </a>
 
             <a
-              href="https://github.com/TuGitHub"
+              href="https://github.com/Sr-Stroncio"
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-white border border-gray-300 p-6 w-64 text-center rounded-xl transition duration-300 card-stroncio"
             >
               <img
-                src="https://via.placeholder.com/150"
+                src={SrStroncio}
                 alt="Sr.Stroncio"
                 className="w-28 h-28 mx-auto rounded-full border-2 border-gray-300 mb-4"
               />

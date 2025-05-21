@@ -165,6 +165,9 @@ Darkmode
     box-shadow: #b3b3b3 0px 1.5px 0.5cap 0px;
 }
 
+[data-theme="dark"] .rules{
+    background-color: #070707;
+}
 
 /*
 
