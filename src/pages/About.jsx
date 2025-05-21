@@ -33,7 +33,7 @@ const About = () => {
           />
         </div>
 
-        <div className="about-section w-full bg-white text-start py-8 ml-7">
+        <div className="about-section w-full bg-white text-start py-8">
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-5">
             Stay Updated
           </h2>
@@ -54,17 +54,6 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-white border border-gray-300 p-6 w-64 text-center rounded-xl transition duration-300 card-jeffrey"
-              style={{
-                boxShadow: "0 0 10px rgba(59, 130, 246, 0.3)",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.boxShadow =
-                  "0 0 20px rgba(59, 130, 246, 0.6)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.boxShadow =
-                  "0 0 10px rgba(59, 130, 246, 0.3)")
-              }
             >
               <img
                 src="https://via.placeholder.com/150"
@@ -79,17 +68,6 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-white border border-gray-300 p-6 w-64 text-center rounded-xl transition duration-300 card-danny"
-              style={{
-                boxShadow: "0 0 10px rgba(234, 179, 8, 0.3)",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.boxShadow =
-                  "0 0 20px rgba(234, 179, 8, 0.6)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.boxShadow =
-                  "0 0 10px rgba(234, 179, 8, 0.3)")
-              }
             >
               <img
                 src="https://via.placeholder.com/150"
@@ -104,17 +82,6 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-white border border-gray-300 p-6 w-64 text-center rounded-xl transition duration-300 card-stroncio"
-              style={{
-                boxShadow: "0 0 10px rgba(34, 197, 94, 0.3)",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.boxShadow =
-                  "0 0 20px rgba(34, 197, 94, 0.6)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.boxShadow =
-                  "0 0 10px rgba(34, 197, 94, 0.3)")
-              }
             >
               <img
                 src="https://via.placeholder.com/150"
