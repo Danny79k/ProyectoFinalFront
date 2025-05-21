@@ -169,6 +169,11 @@ Darkmode
     background-color: #070707;
 }
 
+[data-theme="dark"] .rulesText{
+    color: #ffffff;
+}
+
+
 /*
 
 
