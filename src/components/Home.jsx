@@ -11,7 +11,7 @@ import Error from "../utils/Error";
 import Editors from "./Editors";
 
 export function Home() {
-  const [activeOption, setActiveOption] = useState("Regional");
+  const [activeOption, setActiveOption] = useState("Breaking");
   const token = sessionStorage.getItem("token");
   if (!token) {
     window.location.href = "/signin";

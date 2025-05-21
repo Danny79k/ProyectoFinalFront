@@ -169,6 +169,11 @@ Darkmode
     background-color: #242424;
 }
 
+[data-theme="dark"] .settings{
+    background-color: #242424;
+    color: #ffffff;
+}
+
 
 /* 
 

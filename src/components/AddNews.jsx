@@ -1,7 +1,9 @@
 import UseFetch from "../hooks/UseFetch";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AddNews = () => {
+  const navigate = useNavigate(); 
   const token = sessionStorage.getItem("token");
   const currentUser = sessionStorage.getItem("user");
   const currentUserParsed = JSON.parse(currentUser);
@@ -19,8 +21,7 @@ export const AddNews = () => {
     if (file) {
       setPreview(URL.createObjectURL(file));
       setImg(file);
-      console.log(file)
-
+      console.log(file);
     }
   };
 
@@ -37,16 +38,8 @@ export const AddNews = () => {
     formData.append("urgent", e.target.urgent.checked ? 1 : 0);
     formData.append("premium", e.target.premium.checked ? 1 : 0);
     formData.append("main_image", e.target.main_image.files[0]);
-  
-    for (let pair of formData.entries()) {
-      console.log(pair[0], pair[1]);
-    }
 
     try {
-      for (let pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
-      }
-      
       const response = await fetch(
         "https://jeffrey.informaticamajada.es/api/news",
         {
@@ -59,12 +52,12 @@ export const AddNews = () => {
       );
 
       if (!response.ok) {
-        //const errorData = await response.json();
-        //console.error("Error al enviar:", errorData);
+        console.error("Error al enviar:", await response.json());
         return;
       }
-      //const result = await response.json();
-      //console.log("Noticia subida correctamente:", result);
+
+      // Si todo salió bien, redireccionar:
+      navigate("/home/my_posts");
     } catch (error) {
       console.error("Error en la subida:", error);
     }
@@ -158,12 +151,22 @@ export const AddNews = () => {
 
         <div className="flex items-center gap-4">
           <label className="flex items-center gap-2 text-gray-700">
-            <input type="checkbox" name="urgent" value="1" className="accent-blue-500" />
+            <input
+              type="checkbox"
+              name="urgent"
+              value="1"
+              className="accent-blue-500"
+            />
             Urgente
           </label>
 
           <label className="flex items-center gap-2 text-gray-700">
-            <input type="checkbox" name="premium" value="1" className="accent-blue-500" />
+            <input
+              type="checkbox"
+              name="premium"
+              value="1"
+              className="accent-blue-500"
+            />
             Premium
           </label>
         </div>
@@ -188,7 +191,12 @@ export const AddNews = () => {
           <strong className="text-gray-800">{currentUserParsed.name}</strong>
         </p>
 
-        <input type="text" name="user_id" className="hidden" value={currentUserParsed.id} />
+        <input
+          type="text"
+          name="user_id"
+          className="hidden"
+          value={currentUserParsed.id}
+        />
 
         <button
           type="submit"

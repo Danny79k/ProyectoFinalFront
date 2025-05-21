@@ -25,9 +25,13 @@ export function Myposts() {
       </div>
     );
 
+  const noticiasOrdenadas = [...data.data].sort((a, b) => {
+    return new Date(b.created_at) - new Date(a.created_at);
+  });
+
   return (
     <div className="home-content flex flex-row p-2 mt-4 h-[85vh] overflow-hidden overflow-y-auto">
-      <News noticias={data.data} />
+      <News noticias={noticiasOrdenadas} />
     </div>
   );
 }
