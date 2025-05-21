@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
-// Este es el hook useFetch que realiza la llamada a la API
 const UseFetch = (url, token) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [reloadFlag, setReloadFlag] = useState(0);
+
+  const reload = useCallback(() => {
+    setReloadFlag((prev) => prev + 1);
+  }, []);
 
   useEffect(() => {
     let isMounted = true;
@@ -29,12 +33,7 @@ const UseFetch = (url, token) => {
 
         const result = await response.json();
         if (isMounted) {
-          setData((prevData) => {
-            if (JSON.stringify(prevData) !== JSON.stringify(result)) {
-              return result; // Solo actualiza el estado si los datos han cambiado
-            }
-            return prevData; // Evita actualizar si los datos son los mismos
-          });
+          setData(result);
           setLoading(false);
         }
       } catch (err) {
@@ -52,9 +51,9 @@ const UseFetch = (url, token) => {
     return () => {
       isMounted = false;
     };
-  }, [url, token]);
+  }, [url, token, reloadFlag]);
 
-  return { data, loading, error };
+  return { data, loading, error, reload };
 };
 
-export default UseFetch; // Aquí exportamos el hook
+export default UseFetch;
