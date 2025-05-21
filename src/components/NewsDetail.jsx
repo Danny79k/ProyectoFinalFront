@@ -200,8 +200,9 @@ export function NewsDetail() {
         </div>
       </div>
       <NewsComment userData={usersData} news={id}></NewsComment>
+      
       {showConfirmModal && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="modal fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
             <h2 className="text-lg font-bold mb-4">
               Are you sure you want to delete this news?

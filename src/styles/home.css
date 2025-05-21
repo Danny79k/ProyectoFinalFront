@@ -151,3 +151,90 @@ NewsDetail css
     background-color: #5f0d72;
     color: #b69ab3;
 }
+
+[data-theme="dark"] .modal {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .modal>div {
+    background-color: #1f1f1f;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .modal h2 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .modal button {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .modal button.bg-gray-300 {
+    background-color: #333333;
+}
+
+[data-theme="dark"] .modal button.bg-gray-300:hover {
+    background-color: #444444;
+}
+
+[data-theme="dark"] .modal button.bg-red-500 {
+    background-color: #b91c1c;
+}
+
+[data-theme="dark"] .modal button.bg-red-500:hover {
+    background-color: #991b1b;
+}
+
+[data-theme="dark"] .comments-container {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .comments-container .comment-card {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .comments-container .comment-card .comment-date {
+    color: #bbbbbb;
+}
+
+[data-theme="dark"] .comments-container .comment-card .comment-score,
+[data-theme="dark"] .comments-container .comment-card .comment-content {
+    color: #d0d0d0;
+}
+
+[data-theme="dark"] .comments-container .comment-form {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+
+[data-theme="dark"] .comments-container textarea {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+
+
+[data-theme="dark"] .comments-container select {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+
+
+[data-theme="dark"] .comments-container button {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .comments-container button:hover {
+    background-color: #1d4ed8;
+}
+
+[data-theme="dark"] .ayuda {
+    color: #ffffff;
+}
