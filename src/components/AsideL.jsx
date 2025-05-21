@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import Seguidos from "./Seguidos";
-
 import { IoPersonSharp } from "react-icons/io5";
 import { BsClipboard2PlusFill } from "react-icons/bs";
 import { RiUserFollowFill } from "react-icons/ri";
@@ -30,6 +29,7 @@ function AsideL() {
     }
     // Clear session storage
   };
+
   return (
     <div className="asideL flex flex-col bg-gray-100 basis-[15%]">
       <div className="asideL__container mt-4 flex flex-col flex-grow">
