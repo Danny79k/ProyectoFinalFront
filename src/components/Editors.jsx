@@ -124,12 +124,12 @@ export default function Editors({ editors }) {
                 <button
                   onClick={() => handleFollow(item.id)}
                   disabled={loadingFollowId === item.id}
-                  className="bg-red-600 text-white py-1 px-3 rounded-xl text-sm w-fit hover:bg-red-700 transition disabled:opacity-50"
+                  className="bg-amber-700 text-white py-1 px-3 rounded-xl text-sm w-fit hover:bg-amber-600 transition disabled:opacity-50"
                 >
                   {loadingFollowId === item.id ? "Siguiendo..." : "Follow"}
                 </button>
               ) : (
-                <button onClick={() => handleUnfollow(item.id)} className="bg-green-600 text-white py-1 px-3 rounded-xl text-sm w-fit transition">
+                <button onClick={() => handleUnfollow(item.id)} className="bg-green-700 hover:bg-green-600  text-white py-1 px-3 rounded-xl text-sm w-fit transition">
                   Following
                 </button>
               )}
