@@ -50,6 +50,7 @@ Modo oscuro
 @media screen and (min-width: 950px) {
     .about-container {
         padding: 80px 40px;
+        padding-bottom: 0;
     }
 
     .about-title {
@@ -83,4 +84,91 @@ Modo oscuro
         font-size: 1rem;
         padding: 12px 28px;
     }
+}
+
+/* Modo oscuro */
+
+[data-theme="dark"] .about-section {
+    background-color: #000415;
+}
+
+[data-theme="dark"] .about-section h2 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .about-section p {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .about-section img {
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+@media screen and (min-width: 950px) {
+    .about-section h2 {
+        font-size: 3rem;
+    }
+
+    .about-section p {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .about-section h2 {
+        font-size: 2rem;
+    }
+
+    .about-section p {
+        font-size: 1rem;
+    }
+}
+
+[data-theme="dark"] footer {
+    background: #000415;
+    border-color: #1f2937;
+}
+
+[data-theme="dark"] footer h3 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] footer h4 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] footer a {
+    background-color: #0a0f2c;
+    border-color: #1f2937;
+    color: #ffffff;
+}
+
+/* Sombra normal de cada card en modo oscuro */
+[data-theme="dark"] .card-jeffrey {
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .card-danny {
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.3);
+}
+
+[data-theme="dark"] .card-stroncio {
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+
+/* Hover de las cards en modo oscuro */
+[data-theme="dark"] .card-jeffrey:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+}
+
+[data-theme="dark"] .card-danny:hover {
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.6);
+}
+
+[data-theme="dark"] .card-stroncio:hover {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+}
+
+[data-theme="dark"] footer img {
+    border-color: #374151;
 }

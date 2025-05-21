@@ -91,12 +91,12 @@ export const AddNews = () => {
       <form
         onSubmit={handleSubmit}
         encType="multipart/form-data"
-        className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl p-6 flex flex-col gap-5"
+        className="formNews max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-6 flex flex-col gap-5"
       >
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Añadir Noticia</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Add New</h2>
 
         <div className="flex flex-col">
-          <label className="font-semibold text-gray-700">Título</label>
+          <label className="font-semibold text-gray-700">Title</label>
           <input
             type="text"
             name="title"
@@ -106,7 +106,7 @@ export const AddNews = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="font-semibold text-gray-700">Contenido</label>
+          <label className="font-semibold text-gray-700">Content</label>
           <textarea
             name="content"
             required
@@ -115,7 +115,7 @@ export const AddNews = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="font-semibold text-gray-700">Fecha</label>
+          <label className="font-semibold text-gray-700">Date</label>
           <input
             type="datetime-local"
             name="date"
@@ -125,7 +125,7 @@ export const AddNews = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="font-semibold text-gray-700">Imagen</label>
+          <label className="font-semibold text-gray-700">Image</label>
           <input
             type="file"
             name="main_image"

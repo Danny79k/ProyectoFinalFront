@@ -69,11 +69,11 @@ export function Editors({ Editors }) {
                   onClick={() => handleFollow(item.id)}
                   className="bg-red-600 text-white py-1 px-3 rounded-xl text-sm w-fit hover:bg-red-700 transition"
                 >
-                  Seguir
+                  Follow
                 </button>
               ) : (
                 <p className="bg-green-600 text-white py-1 px-3 rounded-xl text-sm w-fit transition">
-                  Ya lo sigues
+                  Following
                 </p>
               )}
             </div>

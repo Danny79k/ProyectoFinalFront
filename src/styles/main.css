@@ -40,12 +40,12 @@
     /* IE y Edge */
 }
 
-.Al-links{
+.Al-links {
     text-decoration: none;
     color: #414141;
 }
 
-.Al-links:hover{
+.Al-links:hover {
     color: #000000;
 }
 
@@ -93,11 +93,11 @@ darkmode
     fill: #ffffff;
 }
 
-[data-theme="dark"] .seguidos{
+[data-theme="dark"] .seguidos {
     border-color: #536177;
 }
 
-[data-theme="dark"] .usuario-seguido:hover{
+[data-theme="dark"] .usuario-seguido:hover {
     background-color: #242424;
     color: #ffffff;
 }
@@ -106,7 +106,7 @@ darkmode
     color: #ffffff;
 }
 
-[data-theme="dark"] .logout button{
+[data-theme="dark"] .logout button {
     color: #ffffff;
 }
 
@@ -119,16 +119,16 @@ darkmode
     background-color: #551818;
 }
 
-[data-theme="dark"] .asideL__container div h3{
+[data-theme="dark"] .asideL__container div h3 {
     color: #ffffff;
 }
 
 
-[data-theme="dark"] .Al-links{
+[data-theme="dark"] .Al-links {
     color: #afafaf;
 }
 
-[data-theme="dark"] .Al-links:hover{
+[data-theme="dark"] .Al-links:hover {
     color: #ffffff;
 }
 
@@ -143,7 +143,7 @@ darkmode
 
 */
 
-.main__container__header div{
+.main__container__header div {
     border-radius: 40px;
 }
 
@@ -165,7 +165,84 @@ Darkmode
 
 */
 
-[data-theme="dark"] .main__container__header div:hover{
+[data-theme="dark"] .main__container__header div:hover {
     background-color: #242424;
 }
 
+
+/* 
+
+
+
+
+
+Add_News Darkmode
+
+
+
+
+
+*/
+
+[data-theme="dark"] .formNews {
+    background-color: #211f1f;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .formNews h2 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .formNews label {
+    color: #d1d5db;
+    /* gris clarito */
+}
+
+[data-theme="dark"] .formNews input[type="text"],
+[data-theme="dark"] .formNews input[type="datetime-local"],
+[data-theme="dark"] .formNews input[type="file"],
+[data-theme="dark"] .formNews select,
+[data-theme="dark"] .formNews textarea {
+    background-color: #2a2929;
+    color: #f3f4f6;
+    border-color: #3f3f46;
+}
+
+[data-theme="dark"] .formNews input[type="text"]:focus,
+[data-theme="dark"] .formNews input[type="datetime-local"]:focus,
+[data-theme="dark"] .formNews textarea:focus,
+[data-theme="dark"] .formNews select:focus {
+    border-color: #3b82f6;
+    /* azul Tailwind */
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+    outline: none;
+}
+
+[data-theme="dark"] .formNews input[type="checkbox"] {
+    accent-color: #3b82f6;
+}
+
+[data-theme="dark"] .formNews option {
+    background-color: #2a2929;
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .formNews p {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .formNews strong {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .formNews button {
+    background-color: #3b82f6;
+}
+
+[data-theme="dark"] .formNews button:hover {
+    background-color: #2563eb;
+}
+
+[data-theme="dark"] .formNews img {
+    border: 1px solid #3f3f46;
+}
