@@ -1,5 +1,6 @@
 import { useParams, useNavigate, redirect } from "react-router-dom";
 import UseFetch from "../hooks/UseFetch";
+import NewsComment from "./NewsComment";
 
 export function NewsDetail() {
   const { id } = useParams();
@@ -7,7 +8,6 @@ export function NewsDetail() {
   const token = sessionStorage.getItem("token");
   const user = sessionStorage.getItem("user");
   const parsedUser = JSON.parse(user);
-
 
   const {
     data: noticia,
@@ -32,7 +32,9 @@ export function NewsDetail() {
     const formData = new FormData(e.target);
     try {
       const response = await fetch(
-        `https://jeffrey.informaticamajada.es/api/news/${formData.get("id_news")}`,
+        `https://jeffrey.informaticamajada.es/api/news/${formData.get(
+          "id_news"
+        )}`,
         {
           method: "DELETE",
           headers: {
@@ -174,28 +176,38 @@ export function NewsDetail() {
             >
               Volver
             </button>
-            {
-              parsedUser.admin === 1 &&
-              <div className="mt-6 mb-6 mx-5 w-24 px-6 py-2 rounded-lg bg-red-600 text-center">
+            {parsedUser.admin === 1 && (
+              <div className="mt-6 mb-6 mx-5 w-24 text-center">
                 <form method="post" onSubmit={handleDeleteImage}>
-                  <input type="text" name="id_news" className="hidden" value={item.id} />
-                  <button className="text-white font-bold" type="submit">
+                  <input
+                    type="text"
+                    name="id_news"
+                    className="hidden"
+                    value={item.id}
+                  />
+                  <button
+                    className="text-white font-bold deleteB  px-6 py-2 rounded-lg bg-red-500 hover:bg-red-600"
+                    type="submit"
+                  >
                     Borrar
                   </button>
                 </form>
               </div>
-            }
+            )}
           </div>
         </div>
 
         <div className="md:w-1/2 w-full flex justify-center items-center p-4">
           <img
-            src={item.main_image}
+            src={
+              item.main_image.slice(-3) !== "300" ? "https://jeffrey.informaticamajada.es/storage/" + item.main_image : item.main_image
+            }
             alt={item.title}
             className="max-w-[550px] w-full h-full object-contain rounded-lg"
           />
         </div>
       </div>
+      <NewsComment userData={usersData} news={id}></NewsComment>
     </div>
   );
 }

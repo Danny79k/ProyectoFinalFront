@@ -74,10 +74,12 @@ export function News({ noticias, filtro }) {
       {filteredNews.map((item) => (
 
         <NavLink to={`/home/newsDetail/${item.id}`} key={item.id}>
-          
+
           <div className="news rounded-xl shadow flex flex-col cursor-pointer">
             <img
-              src={item.main_image}
+              src={
+                item.main_image.slice(-3) !== "300" ? "https://jeffrey.informaticamajada.es/storage/" + item.main_image : item.main_image
+              }
               alt="Noticia"
               className="w-full h-40 object-cover"
             />
@@ -105,7 +107,7 @@ export function News({ noticias, filtro }) {
       ))}
     </div>
   );
-  
+
 }
 
 export default News;
