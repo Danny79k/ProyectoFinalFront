@@ -3,18 +3,18 @@
 export function Rules() {
   return (
     <div className="rules flex flex-col items-center bg-white px-6 py-10 rules-container">
-      <div className="max-w-4xl w-full">
+      <div className="rulesText max-w-4xl w-full">
         <h1 className="text-4xl md:text-5xl font-bold text-center text-blue-700 mb-8">
           Community Guidelines
         </h1>
 
-        <p className="text-gray-700 text-lg md:text-xl mb-6 text-center">
+        <p className="rulesText text-gray-700 text-lg md:text-xl mb-6 text-center">
           Our platform is dedicated to delivering reliable news and fostering
           respectful discussions. To maintain a healthy environment, all users
           must follow these rules:
         </p>
 
-        <ul className="list-disc pl-6 text-gray-800 space-y-4 text-base md:text-lg">
+        <ul className="rulesText list-disc pl-6 text-gray-800 space-y-4 text-base md:text-lg">
           <li>
             <strong>No fake news:</strong> Sharing misinformation or
             deliberately misleading content is strictly prohibited.
@@ -60,7 +60,7 @@ export function Rules() {
           suspension, or permanent bans.
         </p>
 
-        <p className="text-gray-500 mt-4 text-center italic">
+        <p className="text-gray-600 mt-4 text-center italic">
           Together, we can build a trustworthy and respectful news community.
         </p>
       </div>
