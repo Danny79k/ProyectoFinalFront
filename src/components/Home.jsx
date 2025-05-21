@@ -16,10 +16,13 @@ export function Home() {
   if (!token) {
     window.location.href = "/signin";
   }
+  console.log(token)
   const { data, loading, error } = UseFetch(
     "https://jeffrey.informaticamajada.es/api/news",
     token
   );
+
+  console.log(data)
 
   useEffect(() => {
     if (data && data.length > 0) {
