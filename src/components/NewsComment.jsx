@@ -32,7 +32,7 @@ export default function NewsComment({ userData, news }) {
             </div>
         );
     }
-
+    
     if (error) {
         return (
             <div className="flex flex-col items-center justify-center w-full h-[80vh] text-center px-4">
@@ -48,7 +48,7 @@ export default function NewsComment({ userData, news }) {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
+                            />
                     </svg>
                     <h2 className="text-xl font-semibold">¡Ups! Ocurrió un error</h2>
                     <p className="text-sm">
@@ -58,17 +58,22 @@ export default function NewsComment({ userData, news }) {
                 <button
                     onClick={() => navigate("/home")}
                     className="mt-6 px-4 py-2 bg-blue-500 text-white rounded"
-                >
+                    >
                     Volver
                 </button>
             </div>
         );
     }
+    
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        console.log(formData);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setFormData({ ...formData, date: new Date().toISOString() });
-        console.log(formData);
+        const dataToSend = { ...formData, date: new Date().toISOString() };
+        console.log(dataToSend);
         try {
             const response = await fetch(
                 `https://jeffrey.informaticamajada.es/api/news/${news}/comments`,
@@ -79,7 +84,7 @@ export default function NewsComment({ userData, news }) {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
                     },
-                    body: JSON.stringify(formData),
+                    body: JSON.stringify(dataToSend),
                 }
             );
             if (!response.ok) {
@@ -91,13 +96,9 @@ export default function NewsComment({ userData, news }) {
         }
     }
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-        console.log(formData);
-    };
 
     const comments = data.data  
-    console.log(userData);
+
     return (
         <div>
             <div>
@@ -108,7 +109,7 @@ export default function NewsComment({ userData, news }) {
                             {comments.map((comment, index) => (
                                 <div key={index} className="bg-gray-100 p-3 rounded-lg shadow">
                                     <p className="text-lg text-black"><i>{
-                                    (usersList.find(u => u.id = comment.user_id)).name
+                                    (usersList.find(u => u.id === comment.user_id)).name
                                     }</i>
                                     <span className="text-xs text-gray-500 mx-5">🗓 {comment.date}</span>
                                     </p>

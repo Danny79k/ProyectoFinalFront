@@ -11,14 +11,12 @@ export default function Editors({ editors }) {
   const [followedIds, setFollowedIds] = useState([]);
   const [loadingFollowId, setLoadingFollowId] = useState(null);
 
-  const navigate = useNavigate();
-
   const token = sessionStorage.getItem("token");
   const user = JSON.parse(sessionStorage.getItem("user"));
 
   if (!user) return <Error error="Usuario no autenticado" />;
 
-  const { data, error, loading } = useFetch(
+  const { data, error, loading, reload } = useFetch(
     `https://jeffrey.informaticamajada.es/api/users/${user.id}/following`,
     token
   );
@@ -47,7 +45,7 @@ export default function Editors({ editors }) {
       });
       if (res.ok && !followedIds.includes(redactorId)) {
         setFollowedIds((prev) => [...prev, redactorId]);
-        window.location.reload();
+        reload();
       } else {
         console.error("Error al seguir:", await res.text());
       }
@@ -93,6 +91,7 @@ export default function Editors({ editors }) {
         setFollowedIds((prev) =>
           prev.filter((follow) => follow.redactor_id !== redactorId)
         );
+        reload();
       } else {
         console.error("Error al dejar de seguir:", await res2.text());
       }
