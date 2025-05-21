@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Seguidos from "./Seguidos";
+
 import { IoPersonSharp } from "react-icons/io5";
 import { BsClipboard2PlusFill } from "react-icons/bs";
 import { RiUserFollowFill } from "react-icons/ri";

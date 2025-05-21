@@ -43,3 +43,8 @@ export const useNewsStore = create((set) => ({
   searchTerm: "",
   setSearchTerm: (term) => set({ searchTerm: term }),
 }));
+
+export const useFollowsStore = create((set) => ({
+  change: 0,
+  triggerChange: () => set((state) => ({ change: state.change + 1 })),
+}));
