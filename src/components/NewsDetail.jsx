@@ -1,5 +1,6 @@
 import { useParams, useNavigate, redirect } from "react-router-dom";
 import UseFetch from "../hooks/UseFetch";
+import { useState } from "react";
 import NewsComment from "./NewsComment";
 
 export function NewsDetail() {
@@ -8,6 +9,7 @@ export function NewsDetail() {
   const token = sessionStorage.getItem("token");
   const user = sessionStorage.getItem("user");
   const parsedUser = JSON.parse(user);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const {
     data: noticia,
@@ -27,35 +29,30 @@ export function NewsDetail() {
     loading: categoriesLoading,
   } = UseFetch("https://jeffrey.informaticamajada.es/api/categories", token);
 
-  const handleDeleteImage = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
+  const handleDeleteImage = async () => {
     try {
       const response = await fetch(
-        `https://jeffrey.informaticamajada.es/api/news/${formData.get(
-          "id_news"
-        )}`,
+        `https://jeffrey.informaticamajada.es/api/news/${item.id}`,
         {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          body: formData,
         }
       );
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error("Error al eliminar:", errorData);
+        console.error("Error deleting:", errorData);
         return;
       }
 
       const result = await response.json();
-      console.log("Noticia eliminada correctamente:", result);
+      console.log("News deleted successfully:", result);
       navigate("/home");
       window.location.reload();
     } catch (error) {
-      console.error("Error en la eliminacion:", error);
+      console.error("Error during deletion:", error);
     }
   };
 
@@ -143,7 +140,7 @@ export function NewsDetail() {
           <div>
             <h1 className="text-3xl font-bold">{item.title}</h1>
             <p className="text-sm text-gray-600 mt-1">
-              Publicado el {new Date(item.created_at).toLocaleDateString()}
+              Published on {new Date(item.created_at).toLocaleDateString()}
             </p>
 
             <div className="flex flex-wrap gap-2 mt-2 text-sm">
@@ -151,7 +148,7 @@ export function NewsDetail() {
                 {item.type}
               </span>
               <span className="badge-categoria px-3 py-1 rounded-full bg-green-200 text-green-900">
-                Categoría:{" "}
+                Category:{" "}
                 {categories.find((c) => c.id == item.category_id)?.type ||
                   item.category_id}
               </span>
@@ -174,24 +171,16 @@ export function NewsDetail() {
               onClick={() => navigate("/home")}
               className="mt-6 mb-6 w-24 px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow"
             >
-              Volver
+              Return
             </button>
             {parsedUser.admin === 1 && (
               <div className="mt-6 mb-6 mx-5 w-24 text-center">
-                <form method="post" onSubmit={handleDeleteImage}>
-                  <input
-                    type="text"
-                    name="id_news"
-                    className="hidden"
-                    value={item.id}
-                  />
-                  <button
-                    className="text-white font-bold deleteB  px-6 py-2 rounded-lg bg-red-500 hover:bg-red-600"
-                    type="submit"
-                  >
-                    Borrar
-                  </button>
-                </form>
+                <button
+                  className="text-white font-bold px-6 py-2 rounded-lg bg-red-500 hover:bg-red-600"
+                  onClick={() => setShowConfirmModal(true)}
+                >
+                  Delete
+                </button>
               </div>
             )}
           </div>
@@ -200,7 +189,10 @@ export function NewsDetail() {
         <div className="md:w-1/2 w-full flex justify-center items-center p-4">
           <img
             src={
-              item.main_image.slice(-3) !== "300" ? "https://jeffrey.informaticamajada.es/storage/" + item.main_image : item.main_image
+              item.main_image.slice(-3) !== "300"
+                ? "https://jeffrey.informaticamajada.es/storage/" +
+                  item.main_image
+                : item.main_image
             }
             alt={item.title}
             className="max-w-[550px] w-full h-full object-contain rounded-lg"
@@ -208,6 +200,33 @@ export function NewsDetail() {
         </div>
       </div>
       <NewsComment userData={usersData} news={id}></NewsComment>
+      
+      {showConfirmModal && (
+        <div className="modal fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+            <h2 className="text-lg font-bold mb-4">
+              Are you sure you want to delete this news?
+            </h2>
+            <div className="flex justify-end gap-4">
+              <button
+                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                onClick={() => setShowConfirmModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                onClick={() => {
+                  setShowConfirmModal(false);
+                  handleDeleteImage();
+                }}
+              >
+                Yes, delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
