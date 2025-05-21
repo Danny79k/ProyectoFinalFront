@@ -3,6 +3,7 @@ import "../styles/about.css";
 import img from "../assets/view.png";
 import jeffrey from "../assets/Jeffrey.png";
 import SrStroncio from "../assets/Sr.stroncio.png";
+import Danny from "../assets/Danny.png";
 const About = () => {
   return (
     <>
@@ -71,7 +72,7 @@ const About = () => {
               className="group bg-white border border-gray-300 p-6 w-64 text-center rounded-xl transition duration-300 card-danny"
             >
               <img
-                src="https://via.placeholder.com/150"
+                src={Danny}
                 alt="Danny"
                 className="w-28 h-28 mx-auto rounded-full border-2 border-gray-300 mb-4"
               />
