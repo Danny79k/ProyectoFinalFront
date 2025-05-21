@@ -95,7 +95,7 @@ export function Home() {
 
       <div className="home-content flex flex-row p-2 mt-4 h-[77vh] overflow-hidden overflow-y-auto">
         {activeOption === "Editors" ? (
-          <Editors Editors={editors} />
+          <Editors editors={editors} />
         ) : (
           <News noticias={data.data} filtro={activeOption} />
         )}
