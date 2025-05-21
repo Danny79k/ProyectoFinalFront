@@ -10,6 +10,25 @@ function AsideL() {
   const { isDarkMode, toggleTheme } = useUtilityMenu();
   const { setSearchTerm } = useNewsStore();
 
+  const handleLogout = () => {
+    try {
+      fetch("https://jeffrey.informaticamajada.es/api/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      });
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("user");
+
+      // Redirect to login page
+      window.location.href = "/signin";
+    } catch (error) {
+      console.log(error);
+    }
+    // Clear session storage
+  }
   return (
     <div className="asideL flex flex-col bg-gray-100 basis-[15%]">
       <div className="asideL__container mt-4 flex flex-col flex-grow">
@@ -66,6 +85,7 @@ function AsideL() {
 
       <div className="dark-mode-asideL mt-auto p-3 mb-0">
         <button
+          onClick={handleLogout}
           className="flex items-center w-full px-4 py-3 text-gray-800 hover:bg-gray-200 transition-colors"
         >
           <CgLogOut className="text-gray-200" />

@@ -12,28 +12,41 @@ export const AddNews = () => {
   );
 
   const [preview, setPreview] = useState(null);
+  const [img, setImg] = useState([]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setPreview(URL.createObjectURL(file));
+      setImg(file);
+      console.log(file)
+
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const formData = new FormData();
 
-    formData.set("urgent", formData.get("urgent") ? 1 : 0);
-    formData.set("premium", formData.get("premium") ? 1 : 0);
-
-    const file = e.target?.files[0] || [];
-    if (file) {
-      setPreview(URL.createObjectURL(file));
-      formData.set("main_image", formData.get("main_image") ? file : 0);
+    formData.append("title", e.target.title.value);
+    formData.append("content", e.target.content.value);
+    formData.append("date", e.target.date.value);
+    formData.append("type", e.target.type.value);
+    formData.append("category_id", e.target.category_id.value);
+    formData.append("user_id", e.target.user_id.value);
+    formData.append("urgent", e.target.urgent.checked ? 1 : 0);
+    formData.append("premium", e.target.premium.checked ? 1 : 0);
+    formData.append("main_image", e.target.main_image.files[0]);
+  
+    for (let pair of formData.entries()) {
+      console.log(pair[0], pair[1]);
     }
 
     try {
+      for (let pair of formData.entries()) {
+        console.log(pair[0], pair[1]);
+      }
+      
       const response = await fetch(
         "https://jeffrey.informaticamajada.es/api/news",
         {
@@ -46,13 +59,12 @@ export const AddNews = () => {
       );
 
       if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Error al enviar:", errorData);
+        //const errorData = await response.json();
+        //console.error("Error al enviar:", errorData);
         return;
       }
-
-      const result = await response.json();
-      console.log("Noticia subida correctamente:", result);
+      //const result = await response.json();
+      //console.log("Noticia subida correctamente:", result);
     } catch (error) {
       console.error("Error en la subida:", error);
     }
