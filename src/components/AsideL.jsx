@@ -4,7 +4,7 @@ import { IoPersonSharp } from "react-icons/io5";
 import { BsClipboard2PlusFill } from "react-icons/bs";
 import { RiUserFollowFill } from "react-icons/ri";
 import { useUtilityMenu, useNewsStore } from "../store/useStore";
-import { CgLogOut } from "react-icons/cg";
+import { HiArrowNarrowLeft } from "react-icons/hi";
 
 function AsideL() {
   const { isDarkMode, toggleTheme } = useUtilityMenu();
@@ -28,7 +28,7 @@ function AsideL() {
       console.log(error);
     }
     // Clear session storage
-  }
+  };
   return (
     <div className="asideL flex flex-col bg-gray-100 basis-[15%]">
       <div className="asideL__container mt-4 flex flex-col flex-grow">
@@ -83,18 +83,7 @@ function AsideL() {
         </div>
       </div>
 
-      <div className="dark-mode-asideL mt-auto p-3 mb-0">
-        <button
-          onClick={handleLogout}
-          className="flex items-center w-full px-4 py-3 text-gray-800 hover:bg-gray-200 transition-colors"
-        >
-          <CgLogOut className="text-gray-200" />
-
-          <span className="ml-3 text-sm">Logout</span>
-        </button>
-      </div>
-
-      <div className="dark-mode-asideL mt-auto p-3 mb-2">
+      <div className="dark-mode-asideL mt-auto p-2 mb-0">
         <button
           onClick={toggleTheme}
           className="flex items-center w-full px-4 py-3 text-gray-800 hover:bg-gray-200 transition-colors"
@@ -127,6 +116,17 @@ function AsideL() {
             </svg>
           )}
           <span className="ml-3 text-sm">Dark Mode</span>
+        </button>
+      </div>
+
+      <div className="logout mt-auto p-2 mb-0">
+        <button
+          onClick={handleLogout}
+          className="flex items-center w-full px-4 py-3 text-gray-800 transition-colors"
+        >
+          <HiArrowNarrowLeft className="text-dark" />
+
+          <span className="ml-3 text-sm">Logout</span>
         </button>
       </div>
     </div>
