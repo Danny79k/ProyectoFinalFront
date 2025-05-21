@@ -11,6 +11,7 @@ function Main() {
     if (location.pathname.startsWith("/home/blog")) return "Blog";
     if (location.pathname.startsWith("/home/newsDetail")) return "News Detail";
     if (location.pathname.startsWith("/home/add_news")) return "Add News";
+    if (location.pathname.startsWith("/home/my_posts")) return "My Posts";
     return "Error";
   };
 
@@ -29,7 +30,7 @@ function Main() {
     <div className="main basis-[80%] bg-white p-2">
       <div className="main__container">
         <div className="main__container__header flex flex-row items-center justify-between p-2 mb-4">
-          <h1 className="text-2xl font-bold p-2">{getTitle()}</h1>
+          <h1 className="text-2xl font-bold p-2 ml-6">{getTitle()}</h1>
 
           <NavLink to={getIconLink()}>
             <div className="p-2 cursor-pointer hover:bg-gray-200">

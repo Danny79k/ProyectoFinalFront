@@ -20,6 +20,10 @@
     border-radius: 40px;
 }
 
+.logout:hover {
+    background-color: #ed9191;
+}
+
 .admin-options:hover {
     cursor: pointer;
     color: #000000;
@@ -102,8 +106,17 @@ darkmode
     color: #ffffff;
 }
 
+[data-theme="dark"] .logout button{
+    color: #ffffff;
+}
+
+
 [data-theme="dark"] .dark-mode-asideL button:hover {
     background-color: #242424;
+}
+
+[data-theme="dark"] .logout:hover {
+    background-color: #551818;
 }
 
 [data-theme="dark"] .asideL__container div h3{

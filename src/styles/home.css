@@ -147,15 +147,6 @@ NewsDetail css
     color: #d1d5db;
 }
 
-[data-theme="dark"] .newsDetail button {
-    background-color: #40444e;
-    color: white;
-}
-
-[data-theme="dark"] .newsDetail button:hover {
-    background-color: #4d4659;
-}
-
 [data-theme="dark"] .redactor {
     background-color: #5f0d72;
     color: #b69ab3;
