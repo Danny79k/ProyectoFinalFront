@@ -3,12 +3,13 @@ import { useEffect } from "react";
 import useFetch from "../hooks/UseFetch";
 import Loading from "../utils/Loading";
 import Error from "../utils/Error";
-import { useNewsStore } from "../store/useStore";
+import { useNewsStore, useFollowsStore } from "../store/useStore";
 
 export default function Editors({ editors }) {
   const [followedIds, setFollowedIds] = useState([]);
   const [loadingFollowId, setLoadingFollowId] = useState(null);
   const { searchTerm } = useNewsStore();
+  const { triggerChange } = useFollowsStore();
 
   const token = sessionStorage.getItem("token");
   const user = JSON.parse(sessionStorage.getItem("user"));
@@ -48,6 +49,7 @@ export default function Editors({ editors }) {
       if (res.ok && !followedIds.includes(redactorId)) {
         setFollowedIds((prev) => [...prev, redactorId]);
         reload();
+        triggerChange();
       } else {
         console.error("Error al seguir:", await res.text());
       }
@@ -96,6 +98,7 @@ export default function Editors({ editors }) {
           prev.filter((follow) => follow.redactor_id !== redactorId)
         );
         reload();
+        triggerChange();
       } else {
         console.error("Error al dejar de seguir:", await res2.text());
       }
