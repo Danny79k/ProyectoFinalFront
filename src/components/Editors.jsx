@@ -4,6 +4,7 @@ import useFetch from "../hooks/UseFetch";
 import Loading from "../utils/Loading";
 import Error from "../utils/Error";
 import { useNewsStore, useFollowsStore } from "../store/useStore";
+import { NavLink } from "react-router-dom";
 
 export default function Editors({ editors }) {
   const [followedIds, setFollowedIds] = useState([]);
@@ -126,11 +127,10 @@ export default function Editors({ editors }) {
 
   return (
     <div
-      className={`grid gap-4 p-4 w-full ${
-        editors.length < 3
-          ? "place-items-center"
-          : "md:grid-cols-2 lg:grid-cols-3"
-      }`}
+      className={`grid gap-4 p-4 w-full ${editors.length < 3
+        ? "place-items-center"
+        : "md:grid-cols-2 lg:grid-cols-3"
+        }`}
     >
       {editors.map((item) => {
         const isFollowed = followedIds.includes(Number(item.id));
@@ -139,11 +139,13 @@ export default function Editors({ editors }) {
             key={item.id}
             className="news rounded-xl shadow flex flex-col cursor-pointer max-w-md w-full"
           >
-            <img
-              src={item.img}
-              alt={item.name}
-              className="w-full h-40 object-cover"
-            />
+            <NavLink to={`/home/writers/${item.id}`}>
+              <img
+                src={item.img}
+                alt={item.name}
+                className="w-full h-40 object-cover"
+              />
+            </NavLink>
             <div className="p-4 flex flex-row justify-around gap-2 flex-1">
               <p className="text-sm font-medium truncate">{item.name}</p>
               {!isFollowed ? (
