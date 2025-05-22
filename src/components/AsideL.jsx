@@ -9,6 +9,15 @@ import { HiArrowNarrowLeft } from "react-icons/hi";
 function AsideL() {
   const { isDarkMode, toggleTheme } = useUtilityMenu();
   const { setSearchTerm } = useNewsStore();
+  const currentUser = sessionStorage.getItem("user");
+  const currentUserParsed = JSON.parse(currentUser);
+
+  const token = sessionStorage.getItem("token");
+  if (!token) {
+    window.location.href = "/signin";
+  }
+
+  console.log(currentUserParsed);
 
   const handleLogout = () => {
     try {
@@ -45,21 +54,26 @@ function AsideL() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
+        {
+          (currentUserParsed.admin == 1 || currentUserParsed.type == 'writer' ) ?
+            <div className="ml-2 w-40 flex flex-col items-start justify-start mb-4 space-y-1">
+              <NavLink className="w-full" to="/home/my_posts">
+                <div className="admin-options flex flex-row items-center p-2 hover:bg-gray-200">
+                  <IoPersonSharp className="text-cyan-900" />
+                  <p className="text-sm ml-2">My Posts</p>
+                </div>
+              </NavLink>
+              <NavLink className="w-full" to="/home/add_news">
+                <div className="admin-options w-full flex flex-row items-center p-2 hover:bg-gray-200">
+                  <BsClipboard2PlusFill className="text-green-900" />
+                  <p className="text-sm ml-2">New Posts</p>
+                </div>
+              </NavLink>
+            </div>
+            :
+            <></>
+        }
 
-        <div className="ml-2 w-40 flex flex-col items-start justify-start mb-4 space-y-1">
-          <NavLink className="w-full" to="/home/my_posts">
-            <div className="admin-options flex flex-row items-center p-2 hover:bg-gray-200">
-              <IoPersonSharp className="text-cyan-900" />
-              <p className="text-sm ml-2">My Posts</p>
-            </div>
-          </NavLink>
-          <NavLink className="w-full" to="/home/add_news">
-            <div className="admin-options w-full flex flex-row items-center p-2 hover:bg-gray-200">
-              <BsClipboard2PlusFill className="text-green-900" />
-              <p className="text-sm ml-2">New Posts</p>
-            </div>
-          </NavLink>
-        </div>
 
         <div className="ml-2 flex flex-col items-start justify-center mb-4 space-y-1">
           <div className="flex flex-row items-center p-2">
@@ -130,7 +144,7 @@ function AsideL() {
           <span className="ml-3 text-sm">Logout</span>
         </button>
       </div>
-    </div>
+    </div >
   );
 }
 

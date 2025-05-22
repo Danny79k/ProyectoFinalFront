@@ -8,6 +8,8 @@ export const AddNews = () => {
   const currentUser = sessionStorage.getItem("user");
   const currentUserParsed = JSON.parse(currentUser);
 
+  if(currentUserParsed.admin !== 1 && currentUserParsed.type !== 'writer') navigate("/home")
+
   const { data, error, loading } = UseFetch(
     "https://jeffrey.informaticamajada.es/api/categories",
     token

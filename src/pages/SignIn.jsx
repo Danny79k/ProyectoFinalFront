@@ -1,23 +1,31 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useUtilityMenu } from "../store/useStore";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/signIn.css";
 import img from "../assets/login.png";
 
 function SignIn() {
+
+  const navigate = useNavigate();  
+
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      navigate("/home");
+    }
+  }, [navigate]);
+  
 
   //useState para guardar el email y la contraseña y el modo oscuro de manera global
   // ===================================================================
   const [email, setEmail] = useState("usuario@ejemplo.com");
   const [password, setPassword] = useState("password");
 
-  const navigate = useNavigate();
 
   const { isDarkMode } = useUtilityMenu();
   // ===================================================================
 
-//#region handleLogin
-// =====================================================================
+  //#region handleLogin
+  // =====================================================================
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -28,7 +36,12 @@ function SignIn() {
       });
       const data = await res.json();
 
-
+      if (!res.ok) {
+        // Mostrar error si las credenciales no son válidas
+        console.error("Credenciales incorrectas");
+        alert(data.message || "Email o contraseña incorrectos.");
+        return; // detenemos aquí para que no siga
+      }
       //guardamos el token en el sessionStorage
       // ================================================================
       sessionStorage.setItem("token", data.token);
@@ -41,14 +54,14 @@ function SignIn() {
 
       console.log(data);
       console.log(email, password);
-      navigate('/home'); 
+      navigate('/home');
     } catch (error) {
       console.error(error);
     }
   };
 
-//#endregion
-// ======================================================================
+  //#endregion
+  // ======================================================================
   return (
     <>
       <div className="signIn-div flex flex-col justify-center items-center">
