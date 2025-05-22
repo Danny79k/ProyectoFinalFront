@@ -43,7 +43,7 @@ function AsideL() {
     <div className="asideL flex flex-col bg-gray-100 basis-[15%]">
       <div className="asideL__container mt-4 flex flex-col flex-grow">
         <div className="flex items-center ml-2 p-1">
-          <h3>Usuario</h3>
+          <h3>{currentUserParsed.name}</h3>
         </div>
 
         <div className="buscador w-full mb-3 p-4 flex items-center justify-start">
