@@ -12,12 +12,12 @@ function Main() {
     if (location.pathname.startsWith("/home/newsDetail")) return "News Detail";
     if (location.pathname.startsWith("/home/add_news")) return "Add News";
     if (location.pathname.startsWith("/home/my_posts")) return "My Posts";
+    if (location.pathname.startsWith("/home/writers")) return "Writers";
     return "Error";
   };
 
   const getIcon = () => {
-    if (location.pathname !== "/home")
-      return <HiHome className="size-6" />;
+    if (location.pathname !== "/home") return <HiHome className="size-6" />;
     return <FiMoreVertical className="size-6" />;
   };
 
