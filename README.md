@@ -47,13 +47,9 @@ src/
 ├── index.css      # Estilos base
 └── main.jsx       # Punto de entrada de la app
 
-Para los profesores
-Este proyecto está listo para su evaluación. Pueden acceder usando las siguientes credenciales:
-
+Para los profesores:
 URL del proyecto: https://rafael.informaticamajada.es/
-
 Email: admin@admin.com
-
 Contraseña: admin1234
 
 📄 Licencia
