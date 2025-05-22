@@ -1,4 +1,5 @@
-import { NavLink, useNavigate, useEffect } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import "../styles/getStarted.css";
 import img from "../assets/Tele M.png";
 import { HiArrowRight } from "react-icons/hi";
