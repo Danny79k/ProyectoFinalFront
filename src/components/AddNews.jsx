@@ -138,7 +138,7 @@ export const AddNews = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="font-semibold text-gray-700">Tipo</label>
+          <label className="font-semibold text-gray-700">Type</label>
           <select
             name="type"
             required
@@ -159,7 +159,7 @@ export const AddNews = () => {
               value="1"
               className="accent-blue-500"
             />
-            Urgente
+            Last Call
           </label>
 
           <label className="flex items-center gap-2 text-gray-700">
@@ -174,7 +174,7 @@ export const AddNews = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="font-semibold text-gray-700">Categoría</label>
+          <label className="font-semibold text-gray-700">Category</label>
           <select
             name="category_id"
             required
@@ -189,7 +189,7 @@ export const AddNews = () => {
         </div>
 
         <p className="text-gray-600 text-sm">
-          Estás publicando esta noticia como{" "}
+          You are publishing the news as{" "}
           <strong className="text-gray-800">{currentUserParsed.name}</strong>
         </p>
 
@@ -204,7 +204,7 @@ export const AddNews = () => {
           type="submit"
           className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-200"
         >
-          Publicar Noticia
+          Make public
         </button>
       </form>
     </div>
