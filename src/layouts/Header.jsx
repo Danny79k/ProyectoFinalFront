@@ -176,74 +176,87 @@ function Header() {
                 <FaCodeBranch className="mt-1 text-cyan-600" />
                 <h3>Star Us</h3>
               </div>
+              {(!sessionStorage.getItem("token"))
+
+              }
             </NavLink>
-            <NavLink to="signIn">
-              <h3 className="header-text2 cursor-pointer px-5 py-2">
-                Sign In{" "}
-              </h3>
-            </NavLink>
-            <NavLink to="getStarted">
-              <h3 className="header-text2 cursor-pointer px-5 py-2">
-                Get Started
-              </h3>
-            </NavLink>
-          </div>
+            {
+              (!sessionStorage.getItem("token")) ?
+                <div className="flex flex-row items-center">
+                  <NavLink to="signIn">
+                    <h3 className="header-text2 cursor-pointer px-5 py-2">
+                      Sign In{" "}
+                    </h3>
+                  </NavLink>
+                  <NavLink to="getStarted">
+                    <h3 className="header-text2 cursor-pointer px-5 py-2">
+                      Get Started
+                    </h3>
+                  </NavLink>
+                </div>
+                :
+                <NavLink to="/home">
+                  <h3 className="header-text2 cursor-pointer px-5 py-2">
+                      Home
+                    </h3>
+                </NavLink>
+
+            }
         </div>
+      </div>
 
-        {/* Hamburger Menu Icon */}
-        <button
-          className={`butom-header mr-2 ${
-            menuOpen ? "header-rotate-y-hidden" : "header-rotate-y"
+      {/* Hamburger Menu Icon */}
+      <button
+        className={`butom-header mr-2 ${menuOpen ? "header-rotate-y-hidden" : "header-rotate-y"
           }`}
-          onClick={toggleMenu}
+        onClick={toggleMenu}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 6l16 0" />
-            <path d="M4 12l16 0" />
-            <path d="M4 18l16 0" />
-          </svg>
-        </button>
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M4 6l16 0" />
+          <path d="M4 12l16 0" />
+          <path d="M4 18l16 0" />
+        </svg>
+      </button>
 
-        <button
-          className={`butom-header absolute right-4 ${
-            menuOpen ? "header-rotate-y" : "header-rotate-y-hidden"
+      <button
+        className={`butom-header absolute right-4 ${menuOpen ? "header-rotate-y" : "header-rotate-y-hidden"
           }`}
-          onClick={toggleMenu}
+        onClick={toggleMenu}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M18 6l-12 12" />
-            <path d="M6 6l12 12" />
-          </svg>
-        </button>
-      </header>
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M18 6l-12 12" />
+          <path d="M6 6l12 12" />
+        </svg>
+      </button>
+    </header >
 
-      {/* Mobile Menu */}
-      <div
-        className={`headerMenu-div flex flex-col absolute overflow-auto ${
-          menuOpen ? "header-fade" : "header-fade-hidden"
-        }`}
+      {/* Mobile Menu */ }
+      < div
+  className = {`headerMenu-div flex flex-col absolute overflow-auto ${menuOpen ? "header-fade" : "header-fade-hidden"
+    }`
+}
       >
         <ul
           className=" px-4 py-4 space-y-2 divide-y divide-gray-500"
@@ -473,7 +486,7 @@ function Header() {
             </li>
           </ul>
         </div>
-      </div>
+      </div >
     </>
   );
 }

@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import UseFetch from "../hooks/UseFetch";
 import News from "./News";
 
 export function Myposts() {
+  const navigate = useNavigate()
   const token = sessionStorage.getItem("token");
   const currentUser = sessionStorage.getItem("user");
   const currentUserParsed = JSON.parse(currentUser);
+
+  if(currentUserParsed.admin !== 1 && currentUserParsed.type !== 'writer') navigate("/home")
 
   const { data, error, loading } = UseFetch(
     `https://jeffrey.informaticamajada.es/api/users/${currentUserParsed.id}/news`,

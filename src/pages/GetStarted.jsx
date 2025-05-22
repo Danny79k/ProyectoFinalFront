@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import "../styles/getStarted.css";
 import img from "../assets/Tele M.png";
 import { HiArrowRight } from "react-icons/hi";
@@ -6,6 +7,15 @@ import { useFormStore } from "../store/useStore";
 import { toast } from "react-toastify";
 
 function GetStarted() {
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      navigate("/home");
+    }
+  }, [navigate]);
+
   const {
     step,
     setStep,
