@@ -25,5 +25,5 @@ dist-ssr
 
 # claves
 
-/storage/key
-/storage/key.pub
+storage/key
+storage/key.pub
